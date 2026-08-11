@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VITALITÉ 360 — Bien-être Holistique en Suisse</title>
+<meta name="description" content="Diagnostic express et répertoire de thérapies holistiques en Suisse.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root {
+  --emerald: #1B4332;
+  --sage: #2D6A4F;
+  --eucalyptus: #52B788;
+  --cta: #D97706;
+  --cream: #F8F9FA;
+  --text-primary: #1B4332;
+  --text-secondary: #555;
+  --border: #E0E0E0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--cream);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 700;
+  color: var(--emerald);
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background: white;
+  box-shadow: 0 1px 2px rgba(27, 67, 50, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav .logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--emerald);
+  cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+nav .nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav .nav-links a.active {
+  color: var(--emerald);
+  font-weight: 700;
+}
+
+nav .nav-links a:hover {
+  color: var(--sage);
+}
+
+nav .nav-cta {
+  margin-left: auto;
+}
+
+/* BUTTONS */
+.btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary {
+  background: var(--cta);
+  color: white;
+  box-shadow: 0 4px 6px rgba(27, 67, 50, 0.1);
+}
+
+.btn-primary:hover {
+  background: #C86A00;
+  transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--emerald);
+  border: 2px solid var(--emerald);
+}
+
+.btn-secondary:hover {
+  background: var(--cream);
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--sage) 100%);
+  color: white;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.swiss-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+  font-size: 52px;
+  margin-bottom: 24px;
+  color: white;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* DIAGNOSTIC FORM */
+.diagnostic-section {
+  padding: 80px 40px;
+  background: var(--cream);
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  padding: 48px;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(27, 67, 50, 0.15);
+}
+
+.form-container h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.form-intro {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.form-group {
+  margin-bottom: 28px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--emerald);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--eucalyptus);
+  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.1);
+}
+
+.question-block {
+  background: var(--cream);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.question-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sage);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.question-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--emerald);
+  margin-bottom: 16px;
+}
+
+.options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.option-input:hover {
+  background: rgba(82, 183, 136, 0.05);
+}
+
+.option-input input[type="radio"] {
+  cursor: pointer;
+  width: auto;
+}
+
+.option-label {
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.form-message {
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.form-message.success {
+  background: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #4CAF50;
+}
+
+.form-message.error {
+  background: #FFEBEE;
+  color: #C62828;
+  border: 1px solid #F44336;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* THERAPY DIRECTORY */
+.therapy-directory {
+  padding: 60px 40px;
+  background: white;
+  display: none;
+}
+
+.therapy-directory.active {
+  display: block;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  color: var(--emerald);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color 0.3s;
+}
+
+.back-button:hover {
+  color: var(--sage);
+}
+
+.directory-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.directory-header h2 {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.directory-header p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.filter-section {
+  max-width: 1200px;
+  margin: 0 auto 48px;
+}
+
+.filter-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sage);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  border: 2px solid var(--border);
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.3s;
+}
+
+.filter-btn.active {
+  border-color: var(--eucalyptus);
+  background: var(--eucalyptus);
+  color: white;
+}
+
+.directory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.therapy-card {
+  background: var(--cream);
+  padding: 40px;
+  border-radius: 12px;
+  border-top: 4px solid var(--eucalyptus);
+  box-shadow: 0 1px 2px rgba(27, 67, 50, 0.1);
+}
+
+.therapy-card h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: var(--sage);
+}
+
+.therapy-short-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.therapy-section {
+  margin-bottom: 24px;
+}
+
+.therapy-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--emerald);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.therapy-section-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.therapy-benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.therapy-benefits li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding-left: 20px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.therapy-benefits li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--eucalyptus);
+  font-weight: bold;
+}
+
+.recognition-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--emerald);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.badge.active {
+  background: var(--emerald);
+  color: white;
+  border-color: var(--emerald);
+}
+
+/* LANDING */
+.landing {
+  display: block;
+}
+
+.landing.hidden {
+  display: none;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.problem-card {
+  background: white;
+  padding: 40px 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(27, 67, 50, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.problem-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 15px rgba(27, 67, 50, 0.15);
+}
+
+.problem-card-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.problem-card h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.problem-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  background: var(--emerald);
+  color: white;
+  text-align: center;
+  padding: 40px;
+  font-size: 13px;
+  margin-top: auto;
+}
+
+footer a {
+  color: var(--eucalyptus);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 860px) {
+  nav { padding: 16px 24px; }
+  nav .nav-links { display: none; }
+  .hero { padding: 60px 24px; }
+  .hero h1 { font-size: 36px; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .form-container { padding: 32px 24px; }
+  .directory-grid { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="switchView('landing')">Vitalité 360</div>
+  <ul class="nav-links">
+    <li><a href="#" class="nav-link landing-link active" onclick="event.preventDefault(); switchView('landing');">Accueil</a></li>
+    <li><a href="#" class="nav-link repertoire-link" onclick="event.preventDefault(); switchView('repertoire');">Répertoire</a></li>
+  </ul>
+  <div class="nav-cta">
+    <button class="btn btn-primary btn-small">Contact</button>
+  </div>
+</nav>
+
+<!-- LANDING VIEW -->
+<div class="landing active" id="landing-view">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="swiss-badge">🇨🇭 Conçu en Suisse Romande</div>
+    <h1>Retrouvez l'équilibre de votre bien-être</h1>
+    <p>Une approche holistique basée sur 3 piliers fondamentaux : votre corps, votre énergie et votre sommeil.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" onclick="document.querySelector('.diagnostic-section').scrollIntoView({ behavior: 'smooth' });">
+        Faire le diagnostic
+      </button>
+      <button class="btn btn-secondary" onclick="switchView('repertoire');">
+        Découvrir les thérapies
+      </button>
+    </div>
+  </section>
+
+  <!-- PROBLEMS -->
+  <section style="padding: 80px 40px; background: var(--cream);">
+    <div class="section-header">
+      <h2>Reconnaissez-vous ces signes ?</h2>
+      <p>Vous n'êtes pas seul(e). Ces trois blocages affectent 75% des professionnels urbains.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-card-icon">🔴</div>
+        <h3>Le corps bloqué</h3>
+        <p>Tensions, douleurs chroniques, posture défaillante et manque de mobilité affectent votre quotidien.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-icon">⚡</div>
+        <h3>Le coup de pompe</h3>
+        <p>Fatigue persistante, digestion lente et manque d'énergie vous ralentissent constamment.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-icon">🧠</div>
+        <h3>Le mental en surrégime</h3>
+        <p>Stress chronique, sommeil chaotique et anxiété sabotent votre bien-être général.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGNOSTIC FORM -->
+  <section class="diagnostic-section">
+    <div class="form-container">
+      <h2>Diagnostic Express</h2>
+      <p class="form-intro">Répondez à 6 questions rapides pour découvrir quelles thérapies correspondent le mieux à votre situation.</p>
+
+      <div id="form-message" class="form-message" style="display: none;"></div>
+
+      <form id="diagnostic-form" onsubmit="handleDiagnosticSubmit(event)">
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input id="email" type="email" required placeholder="vous@exemple.ch">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Téléphone (optionnel)</label>
+          <input id="phone" type="tel" placeholder="+41 79 123 45 67">
+        </div>
+
+        <!-- Questions -->
+        <div class="question-block">
+          <div class="question-title">Bio-Mécanique</div>
+          <div class="question-text">Avez-vous des douleurs de dos ou de posture ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q1" value="Pas du tout" required>
+              <span class="option-label">Pas du tout</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q1" value="Un peu">
+              <span class="option-label">Un peu</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q1" value="Modérément">
+              <span class="option-label">Modérément</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q1" value="Beaucoup">
+              <span class="option-label">Beaucoup</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">Bio-Mécanique</div>
+          <div class="question-text">Votre mobilité est-elle limitée ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q2" value="Pas du tout" required>
+              <span class="option-label">Pas du tout</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q2" value="Un peu">
+              <span class="option-label">Un peu</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q2" value="Modérément">
+              <span class="option-label">Modérément</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q2" value="Beaucoup">
+              <span class="option-label">Beaucoup</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">Bio-Chimie</div>
+          <div class="question-text">Souffrez-vous de fatigue chronique ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q3" value="Pas du tout" required>
+              <span class="option-label">Pas du tout</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q3" value="Un peu">
+              <span class="option-label">Un peu</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q3" value="Modérément">
+              <span class="option-label">Modérément</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q3" value="Beaucoup">
+              <span class="option-label">Beaucoup</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">Bio-Chimie</div>
+          <div class="question-text">Avez-vous des troubles digestifs ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q4" value="Pas du tout" required>
+              <span class="option-label">Pas du tout</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q4" value="Un peu">
+              <span class="option-label">Un peu</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q4" value="Modérément">
+              <span class="option-label">Modérément</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q4" value="Beaucoup">
+              <span class="option-label">Beaucoup</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">Bio-Rythme</div>
+          <div class="question-text">Avez-vous du mal à dormir ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q5" value="Pas du tout" required>
+              <span class="option-label">Pas du tout</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q5" value="Un peu">
+              <span class="option-label">Un peu</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q5" value="Modérément">
+              <span class="option-label">Modérément</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q5" value="Beaucoup">
+              <span class="option-label">Beaucoup</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">Bio-Rythme</div>
+          <div class="question-text">Vous sentez-vous stressé(e) ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q6" value="Pas du tout" required>
+              <span class="option-label">Pas du tout</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q6" value="Un peu">
+              <span class="option-label">Un peu</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q6" value="Modérément">
+              <span class="option-label">Modérément</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q6" value="Beaucoup">
+              <span class="option-label">Beaucoup</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit">Obtenir mes recommandations</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- THERAPY DIRECTORY -->
+<div class="therapy-directory" id="repertoire-view">
+  <button class="back-button" onclick="switchView('landing')">← Retour à l'accueil</button>
+
+  <div class="directory-header">
+    <h2>Répertoire des Thérapies</h2>
+    <p>Explorez notre sélection complète de thérapies holistiques reconnues en Suisse.</p>
+  </div>
+
+  <div class="filter-section">
+    <label class="filter-label">Filtrer par symptôme :</label>
+    <div class="filter-buttons" id="filter-buttons">
+      <button class="filter-btn active" onclick="filterTherapies(null)">Tous</button>
+    </div>
+  </div>
+
+  <div class="directory-grid" id="therapies-grid"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 Vitalité 360. Tous droits réservés.</p>
+  <p>🇨🇭 Créé en Suisse Romande | <a href="#">Politique de confidentialité</a> | <a href="#">Conditions d'utilisation</a></p>
+</footer>
+
+<script>
+// Supabase Config
+const SUPABASE_URL = 'https://jystwbrmfjlgrzeavpqw.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_ejGD5yLWi7UwIVBVdQj5Hg_2IR1prZK';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// Therapies Data
+const THERAPIES = [
+  {
+    id: 'sophrologie',
+    name: 'Sophrologie',
+    shortDesc: 'Relaxation dynamique combinant respiration et visualisation.',
+    symptoms: ['stress', 'sommeil', 'fatigue'],
+    whatIsIt: 'Une méthode psycho-corporelle basée sur des exercices de respiration guidée.',
+    forWhat: ['Gestion du stress', 'Amélioration du sommeil', 'Récupération après un burn-out'],
+    howItWorks: 'Séance d\'environ 45 min à 1h, guidée par la voix du praticien.',
+    asca: true, rme: true, diploma: true
+  },
+  {
+    id: 'kinesiologie',
+    name: 'Kinésiologie',
+    shortDesc: 'Libération des blocages physiques et émotionnels via le test musculaire.',
+    symptoms: ['stress', 'fatigue', 'dos'],
+    whatIsIt: 'Une technique qui utilise la réponse musculaire du corps.',
+    forWhat: ['Gestion du stress', 'Douleurs physiques chroniques', 'Amélioration des performances'],
+    howItWorks: 'Le kinésiologue exerce de légères pressions pour identifier les blocages.',
+    asca: true, rme: true, diploma: true
+  },
+  {
+    id: 'shiatsu',
+    name: 'Shiatsu',
+    shortDesc: 'Acupression japonaise pour rééquilibrer l\'énergie du corps.',
+    symptoms: ['dos', 'stress', 'fatigue'],
+    whatIsIt: 'Discipline manuelle basée sur la théorie des méridiens d\'énergie.',
+    forWhat: ['Soulagement des tensions musculaires', 'Réduction du stress', 'Amélioration de la digestion'],
+    howItWorks: 'Se pratique habillé(e), généralement allongé(e) sur un futon.',
+    asca: true, rme: true, diploma: true
+  },
+  {
+    id: 'naturopathie',
+    name: 'Naturopathie (MTE)',
+    shortDesc: 'Médecine Traditionnelle Européenne pour rééquilibrer le terrain naturel.',
+    symptoms: ['digestion', 'fatigue', 'migraine'],
+    whatIsIt: 'Système médical holistique visant à renforcer la santé globale.',
+    forWhat: ['Troubles digestifs', 'Renforcement du système immunitaire', 'Fatigue chronique'],
+    howItWorks: 'Consultation approfondie d\'environ 90 min pour évaluer votre terrain.',
+    asca: true, rme: true, diploma: true
+  },
+  {
+    id: 'massage',
+    name: 'Massage Thérapeutique',
+    shortDesc: 'Libération des tensions musculaires et amélioration de la circulation.',
+    symptoms: ['dos', 'stress', 'migraine'],
+    whatIsIt: 'Technique de manipulation des tissus mous.',
+    forWhat: ['Soulagement des douleurs musculaires', 'Réduction du stress', 'Amélioration de la flexibilité'],
+    howItWorks: 'Vous êtes allongé(e) recouvert de draps pendant 60 à 90 min.',
+    asca: true, rme: true, diploma: false
+  },
+  {
+    id: 'reiki',
+    name: 'Reiki',
+    shortDesc: 'Harmonisation énergétique par apposition des mains.',
+    symptoms: ['stress', 'fatigue', 'sommeil'],
+    whatIsIt: 'Pratique énergétique basée sur la transmission d\'énergie universelle.',
+    forWhat: ['Profonde détente', 'Amélioration du sommeil', 'Soutien émotionnel'],
+    howItWorks: 'Le praticien place ses mains sans pression pendant une séance de 60 min.',
+    asca: false, rme: false, diploma: false
+  }
+];
+
+const SYMPTOMS = [
+  { id: 'stress', label: 'Stress & Anxiété' },
+  { id: 'sommeil', label: 'Troubles du sommeil' },
+  { id: 'dos', label: 'Douleurs de dos' },
+  { id: 'digestion', label: 'Troubles digestifs' },
+  { id: 'fatigue', label: 'Fatigue chronique' },
+  { id: 'migraine', label: 'Maux de tête' }
+];
+
+let currentFilter = null;
+
+function switchView(view) {
+  const landingView = document.getElementById('landing-view');
+  const repertoireView = document.getElementById('repertoire-view');
+  const landingLink = document.querySelector('.landing-link');
+  const repertoireLink = document.querySelector('.repertoire-link');
+
+  if (view === 'landing') {
+    landingView.classList.add('active');
+    repertoireView.classList.remove('active');
+    landingLink.classList.add('active');
+    repertoireLink.classList.remove('active');
+  } else {
+    landingView.classList.remove('active');
+    repertoireView.classList.add('active');
+    landingLink.classList.remove('active');
+    repertoireLink.classList.add('active');
+    renderTherapies();
+  }
+}
+
+function filterTherapies(symptomId) {
+  currentFilter = symptomId;
+  const filtered = symptomId ? THERAPIES.filter(t => t.symptoms.includes(symptomId)) : THERAPIES;
+  renderFilterButtons();
+  renderTherapyCards(filtered);
+}
+
+function renderFilterButtons() {
+  const filterButtons = document.getElementById('filter-buttons');
+  filterButtons.innerHTML = '<button class="filter-btn ' + (currentFilter === null ? 'active' : '') + '" onclick="filterTherapies(null)">Tous</button>';
+
+  SYMPTOMS.forEach(symptom => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn ' + (currentFilter === symptom.id ? 'active' : '');
+    btn.textContent = symptom.label;
+    btn.onclick = () => filterTherapies(symptom.id);
+    filterButtons.appendChild(btn);
+  });
+}
+
+function renderTherapyCards(therapies) {
+  const grid = document.getElementById('therapies-grid');
+  grid.innerHTML = therapies.map(therapy => `
+    <div class="therapy-card">
+      <h3>${therapy.name}</h3>
+      <p class="therapy-short-desc">${therapy.shortDesc}</p>
+
+      <div class="therapy-section">
+        <div class="therapy-section-title">Qu'est-ce que c'est ?</div>
+        <p class="therapy-section-text">${therapy.whatIsIt}</p>
+      </div>
+
+      <div class="therapy-section">
+        <div class="therapy-section-title">Pour quoi ?</div>
+        <ul class="therapy-benefits">
+          ${therapy.forWhat.map(benefit => `<li>${benefit}</li>`).join('')}
+        </ul>
+      </div>
+
+      <div class="therapy-section">
+        <div class="therapy-section-title">Comment ça fonctionne ?</div>
+        <p class="therapy-section-text">${therapy.howItWorks}</p>
+      </div>
+
+      <div class="recognition-badges">
+        ${therapy.asca ? '<span class="badge active">ASCA</span>' : ''}
+        ${therapy.rme ? '<span class="badge active">RME</span>' : ''}
+        ${therapy.diploma ? '<span class="badge active">Diplôme Fédéral</span>' : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTherapies() {
+  renderFilterButtons();
+  renderTherapyCards(THERAPIES);
+}
+
+async function handleDiagnosticSubmit(event) {
+  event.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const messageDiv = document.getElementById('form-message');
+  const submitBtn = event.target.querySelector('button[type="submit"]');
+
+  // Collect responses
+  const responses = [];
+  for (let i = 1; i <= 6; i++) {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    if (selected) {
+      const pillar = ['Bio-Mécanique', 'Bio-Mécanique', 'Bio-Chimie', 'Bio-Chimie', 'Bio-Rythme', 'Bio-Rythme'][i-1];
+      responses.push({
+        pillar: pillar,
+        question: `Question ${i}`,
+        answer: selected.value
+      });
+    }
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Envoi en cours...';
+
+  try {
+    const { error } = await supabase
+      .from('diagnostic_submissions')
+      .insert([
+        {
+          email: email,
+          phone: phone,
+          responses: responses,
+          submitted_at: new Date().toISOString()
+        }
+      ]);
+
+    if (error) {
+      throw error;
+    }
+
+    messageDiv.className = 'form-message success';
+    messageDiv.textContent = '✓ Merci ! Votre diagnostic a été reçu. Nous vous recontacterons bientôt.';
+    messageDiv.style.display = 'block';
+    event.target.reset();
+  } catch (error) {
+    messageDiv.className = 'form-message error';
+    messageDiv.textContent = '✗ Erreur lors de l\'envoi. Veuillez réessayer.';
+    messageDiv.style.display = 'block';
+    console.error('Error:', error);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Obtenir mes recommandations';
+  }
+}
+</script>
+
+</body>
+</html>
