@@ -547,24 +547,182 @@ nav .nav-cta {
   line-height: 1.6;
 }
 
+/* HERO PROOF */
+.hero .proof {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.stars { color: #F4A261; letter-spacing: 2px; }
+
+/* TRUST BAR */
+.trust-bar {
+  background: #fff;
+  border-bottom: 1px solid rgba(27,67,50,0.08);
+  padding: 26px 0;
+}
+.trust-bar .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 36px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--emerald);
+}
+.trust-item .trust-icon { font-size: 1.2rem; }
+
+/* SECTION HEAD */
+.section-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+.section-eyebrow {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 14px;
+}
+
+/* PROBLEM SECTION */
+.problem { padding: 100px 0 90px; }
+.problem h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+.problem-card .emoji {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 16px;
+}
+.problem-closing {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--emerald);
+  line-height: 1.5;
+}
+
+/* SOLUTION / PILLARS */
+.solution { background: #F1F5F1; padding: 100px 0 110px; }
+.solution-container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+.pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+.pillar-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 30px;
+  box-shadow: 0 4px 16px rgba(27,67,50,0.1);
+  border-top: 4px solid var(--eucalyptus);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pillar-card:nth-child(2) { border-top-color: var(--sage); }
+.pillar-card:nth-child(3) { border-top-color: var(--emerald); }
+.pillar-head { display: flex; align-items: center; gap: 14px; }
+.pillar-icon {
+  width: 56px; height: 56px; flex-shrink: 0;
+  border-radius: 14px; background: #E9F5EE;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+}
+.pillar-title {
+  font-family: 'Plus Jakarta Sans',sans-serif;
+  font-weight: 800; font-size: 1.15rem; color: var(--emerald); margin: 0;
+}
+.pillar-card h3 { font-size: 1rem; font-weight: 600; color: var(--sage); margin: 0; }
+.pillar-problem {
+  font-size: 0.9rem; color: #666; font-style: italic;
+  padding-bottom: 12px; border-bottom: 1px solid rgba(27,67,50,0.08); margin: 0;
+}
+.pillar-solution-label {
+  font-size: 0.8rem; font-weight: 700; color: var(--emerald); text-transform: uppercase; letter-spacing: 0.03em;
+}
+.pillar-solution-text { font-size: 0.95rem; color: #333; margin: 0; }
+
+/* TESTIMONIALS */
+.testimonials {
+  background: linear-gradient(180deg, var(--emerald) 0%, #163a2a 100%);
+  color: #fff; padding: 100px 0; text-align: center;
+}
+.testimonials-container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+.testimonials .section-head { color: inherit; }
+.testimonials .section-eyebrow { color: #DCE8E1; }
+.testimonials h2 { color: #fff; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 56px; }
+.testimonial-card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 32px; text-align: left;
+}
+.testimonial-stars { color: #F4A261; font-size: 1rem; letter-spacing: 2px; margin-bottom: 12px; display: block; }
+.testimonial-text { font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px; color: #DCE8E1; }
+.testimonial-author { font-weight: 700; color: #fff; display: block; margin-bottom: 4px; }
+.testimonial-role { font-size: 0.85rem; color: #B7CFC2; }
+
+/* FAQ */
+.faq-section { padding: 100px 0; }
+.faq-container { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(27,67,50,0.1); max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(27,67,50,0.08); padding: 24px; cursor: pointer; transition: background 0.2s ease; }
+.faq-item:last-child { border-bottom: none; }
+.faq-item:hover { background: rgba(82,183,136,0.04); }
+.faq-question { font-weight: 700; color: var(--emerald); display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; }
+.faq-icon { font-size: 1.2rem; transition: transform 0.3s ease; }
+.faq-item.open .faq-icon { transform: rotate(180deg); }
+.faq-answer { margin-top: 16px; color: #555; font-size: 0.9rem; line-height: 1.6; display: none; }
+.faq-item.open .faq-answer { display: block; }
+
+/* FINAL CTA */
+.final-cta { background: var(--emerald); color: #fff; padding: 80px 0; text-align: center; }
+.final-cta h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 18px; }
+.final-cta p { color: #DCE8E1; max-width: 520px; margin: 0 auto 34px; }
+
 /* FOOTER */
 footer {
-  background: var(--emerald);
-  color: white;
+  background: #122A20;
+  color: #9FB8AB;
+  padding: 48px 0 28px;
+  font-size: 0.85rem;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.footer-logo { font-family: 'Plus Jakarta Sans',sans-serif; font-weight: 700; color: #fff; }
+.footer-note {
   text-align: center;
-  padding: 40px;
-  font-size: 13px;
-  margin-top: auto;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.78rem;
+  color: #6E8779;
+  max-width: 1100px;
+  margin: 28px auto 0;
+  padding: 20px 40px 0;
 }
-
-footer a {
-  color: var(--eucalyptus);
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
+footer a { color: var(--eucalyptus); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
 
 @media (max-width: 860px) {
   nav { padding: 16px 24px; }
@@ -572,8 +730,11 @@ footer a:hover {
   .hero { padding: 60px 24px; }
   .hero h1 { font-size: 36px; }
   .problem-grid { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
   .form-container { padding: 32px 24px; }
   .directory-grid { grid-template-columns: 1fr; }
+  .solution-container, .testimonials-container { padding: 0 24px; }
 }
 
 </style>
@@ -596,40 +757,95 @@ footer a:hover {
 <div class="landing active" id="landing-view">
   <!-- HERO -->
   <section class="hero">
-    <div class="swiss-badge">🇨🇭 Conçu en Suisse Romande</div>
-    <h1>Retrouvez l'équilibre de votre bien-être</h1>
-    <p>Une approche holistique basée sur 3 piliers fondamentaux : votre corps, votre énergie et votre sommeil.</p>
+    <div class="swiss-badge">🇨🇭 L'approche globale de la santé au quotidien en Suisse</div>
+    <h1>Retrouvez une énergie durable sans alourdir votre emploi du temps.</h1>
+    <p>Une méthode 360° simple, naturelle et scientifiquement validée pour libérer les tensions du bureau, optimiser votre nutrition et retrouver un sommeil réparateur.</p>
     <div class="hero-cta">
       <button class="btn btn-primary" onclick="document.querySelector('.diagnostic-section').scrollIntoView({ behavior: 'smooth' });">
-        Faire le diagnostic
+        Faire mon Bilan Vitalité 360° (Gratuit — 2 min)
       </button>
       <button class="btn btn-secondary" onclick="switchView('repertoire');">
         Découvrir les thérapies
       </button>
     </div>
+    <p class="proof"><span class="stars">★★★★★</span> Déjà plus de 1 200 actifs accompagnés en Suisse Romande.</p>
   </section>
 
-  <!-- PROBLEMS -->
-  <section style="padding: 80px 40px; background: var(--cream);">
-    <div class="section-header">
-      <h2>Reconnaissez-vous ces signes ?</h2>
-      <p>Vous n'êtes pas seul(e). Ces trois blocages affectent 75% des professionnels urbains.</p>
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <span class="trust-item"><span class="trust-icon">🇨🇭</span> Conçu en Suisse Romande</span>
+      <span class="trust-item"><span class="trust-icon">🧬</span> Approche fondée sur la science</span>
+      <span class="trust-item"><span class="trust-icon">⏱️</span> Format express (3-5 min/jour)</span>
     </div>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-card-icon">🔴</div>
-        <h3>Le corps bloqué</h3>
-        <p>Tensions, douleurs chroniques, posture défaillante et manque de mobilité affectent votre quotidien.</p>
+  </div>
+
+  <!-- PROBLEMS -->
+  <section class="problem" id="probleme">
+    <div class="container" style="max-width:1100px; margin:0 auto; padding:0 40px;">
+      <div class="section-head">
+        <span class="section-eyebrow">Le constat</span>
+        <h2>Vous vous levez déjà fatigué(e) ?</h2>
       </div>
-      <div class="problem-card">
-        <div class="problem-card-icon">⚡</div>
-        <h3>Le coup de pompe</h3>
-        <p>Fatigue persistante, digestion lente et manque d'énergie vous ralentissent constamment.</p>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <span class="emoji">💥</span>
+          <h3>Le corps bloqué</h3>
+          <p>Des tensions constantes dans le cou, le haut du dos ou les lombaires après 8 heures assis.</p>
+        </div>
+        <div class="problem-card">
+          <span class="emoji">⚡</span>
+          <h3>Le coup de pompe</h3>
+          <p>Un manque d'énergie critique vers 14h, comblé à coup de cafés et de sucre.</p>
+        </div>
+        <div class="problem-card">
+          <span class="emoji">🤯</span>
+          <h3>Le mental en surrégime</h3>
+          <p>Un cerveau qui tourne à plein régime à 23h et un sommeil morcelé.</p>
+        </div>
       </div>
-      <div class="problem-card">
-        <div class="problem-card-icon">🧠</div>
-        <h3>Le mental en surrégime</h3>
-        <p>Stress chronique, sommeil chaotique et anxiété sabotent votre bien-être général.</p>
+      <p class="problem-closing">Ce n'est pas une fatalité liée à l'âge ou au travail. C'est simplement le signe que vos 3 piliers biologiques ne sont plus alignés.</p>
+    </div>
+  </section>
+
+  <!-- SOLUTION / 3 PILIERS -->
+  <section class="solution" id="piliers">
+    <div class="solution-container">
+      <div class="section-head">
+        <span class="section-eyebrow">La méthode</span>
+        <h2>Les 3 piliers VITALITÉ 360</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar-card">
+          <div class="pillar-head">
+            <div class="pillar-icon">🦴</div>
+            <h3 class="pillar-title">1. Bio-Mécanique</h3>
+          </div>
+          <h3>Corps &amp; posture</h3>
+          <p class="pillar-problem">Nuque raide, mal de dos, posture affaissée sur l'écran.</p>
+          <span class="pillar-solution-label">Solution</span>
+          <p class="pillar-solution-text"><strong>Routines de Mobilité 5-Min :</strong> exercices discrets et guidés à effectuer directement à votre bureau, sans équipement, pour décompresser la colonne.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-head">
+            <div class="pillar-icon">🌿</div>
+            <h3 class="pillar-title">2. Bio-Chimie</h3>
+          </div>
+          <h3>Nutrition &amp; énergie</h3>
+          <p class="pillar-problem">Digestion lourde, baisse d'énergie, coups de fatigue.</p>
+          <span class="pillar-solution-label">Solution</span>
+          <p class="pillar-solution-text"><strong>Nutrition &amp; Phytothérapie :</strong> conseils micro-nutritionnels simples, assiettes anti-inflammatoires et plantes locales pour stabiliser votre énergie toute la journée.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-head">
+            <div class="pillar-icon">🌙</div>
+            <h3 class="pillar-title">3. Bio-Rythme</h3>
+          </div>
+          <h3>Stress &amp; sommeil</h3>
+          <p class="pillar-problem">Stress chronique, hyper-vigilance, sommeil perturbé.</p>
+          <span class="pillar-solution-label">Solution</span>
+          <p class="pillar-solution-text"><strong>Régulation Nerveuse :</strong> techniques d'apaisement flash (cohérence cardiaque, routines de soirée) pour passer du mode « alerte » au mode « récupération ».</p>
+        </div>
       </div>
     </div>
   </section>
@@ -637,12 +853,158 @@ footer a:hover {
   <!-- DIAGNOSTIC FORM -->
   <section class="diagnostic-section">
     <div class="form-container">
-      <h2>Diagnostic Express</h2>
-      <p class="form-intro">Répondez à 6 questions rapides pour découvrir quelles thérapies correspondent le mieux à votre situation.</p>
+      <h2>Votre Bilan Vitalité 360°</h2>
+      <p class="form-intro">Répondez à ces 6 questions pour identifier quel pilier biologique mérite votre attention en priorité.</p>
 
       <div id="form-message" class="form-message" style="display: none;"></div>
 
       <form id="diagnostic-form" onsubmit="handleDiagnosticSubmit(event)">
+
+        <!-- Questions -->
+        <div class="question-block">
+          <div class="question-title">Bio-Mécanique</div>
+          <div class="question-text">1. Après une journée de travail sur écran, ressentez-vous des douleurs au cou, au haut du dos ou aux lombaires ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q1" value="Oui, douleur quotidienne et limitante" required>
+              <span class="option-label">Oui, c'est une douleur quotidienne et limitante</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q1" value="Oui, mais supportable">
+              <span class="option-label">Oui, mais c'est supportable</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q1" value="Occasionnellement">
+              <span class="option-label">Occasionnellement</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q1" value="Non, pas ce problème">
+              <span class="option-label">Non, je n'ai pas ce problème</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">Bio-Mécanique</div>
+          <div class="question-text">2. Ressentez-vous une baisse d'énergie significative vers 14h–15h ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q2" value="Oui, tous les jours avec café ou sucre" required>
+              <span class="option-label">Oui, tous les jours — j'ai besoin de café ou sucre</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q2" value="Oui, fréquent">
+              <span class="option-label">Oui, c'est fréquent</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q2" value="Parfois">
+              <span class="option-label">Parfois</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q2" value="Non, énergie stable">
+              <span class="option-label">Non, je maintiens mon énergie toute la journée</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">Bio-Chimie</div>
+          <div class="question-text">3. Comment est votre qualité de sommeil ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q3" value="Très mauvais: mal à m'endormir et réveils" required>
+              <span class="option-label">Très mauvais : j'ai du mal à m'endormir et je me réveille plusieurs fois</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q3" value="Moyen: sommeil léger ou réveils nocturnes">
+              <span class="option-label">Moyen : sommeil léger ou réveils nocturnes</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q3" value="Acceptable mais peut mieux faire">
+              <span class="option-label">Acceptable mais peut mieux faire</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q3" value="Bon: dors profondément et me réveille reposé(e)">
+              <span class="option-label">Bon, je dors profondément et me réveille reposé(e)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">Bio-Chimie</div>
+          <div class="question-text">4. Comment gérez-vous le stress au quotidien ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q4" value="Très stressé(e), souvent en hypervigilance" required>
+              <span class="option-label">Je suis très stressé(e) et souvent en hypervigilance</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q4" value="Je gère mais le stress m'affecte régulièrement">
+              <span class="option-label">Je gère, mais le stress m'affecte régulièrement</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q4" value="Stress modéré, maîtrise la plupart du temps">
+              <span class="option-label">Stress modéré, je maîtrise la plupart du temps</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q4" value="Relativement serein(e) et zen">
+              <span class="option-label">Je suis relativement serein(e) et zen</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">Bio-Rythme</div>
+          <div class="question-text">5. Avez-vous des troubles digestifs ou inflammatoires ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q5" value="Oui, régulièrement (ballonnements, constipation, acidité)" required>
+              <span class="option-label">Oui, régulièrement (ballonnements, constipation, acidité, lourdeur)</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q5" value="Oui, mais pas tous les jours">
+              <span class="option-label">Oui, mais pas tous les jours</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q5" value="Occasionnellement">
+              <span class="option-label">Occasionnellement</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q5" value="Non, digestion bonne">
+              <span class="option-label">Non, ma digestion est bonne</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-title">Bio-Rythme</div>
+          <div class="question-text">6. Comment décririez-vous votre niveau de vitalité général ?</div>
+          <div class="options-group">
+            <label class="option-input">
+              <input type="radio" name="q6" value="Épuisé(e) chroniquement" required>
+              <span class="option-label">Épuisé(e) chroniquement — j'ai du mal à avancer</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q6" value="Souvent fatigué(e) sans raison claire">
+              <span class="option-label">Souvent fatigué(e) sans raison claire</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q6" value="Vitalité fluctuante selon les jours">
+              <span class="option-label">Vitalité fluctuante selon les jours</span>
+            </label>
+            <label class="option-input">
+              <input type="radio" name="q6" value="Bonne vitalité en général">
+              <span class="option-label">Bonne vitalité en général</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Champs de contact -->
+        <div class="form-group">
+          <label for="prenom">Votre prénom *</label>
+          <input id="prenom" type="text" required placeholder="Votre prénom">
+        </div>
+
         <div class="form-group">
           <label for="email">Email *</label>
           <input id="email" type="email" required placeholder="vous@exemple.ch">
@@ -653,150 +1015,117 @@ footer a:hover {
           <input id="phone" type="tel" placeholder="+41 79 123 45 67">
         </div>
 
-        <!-- Questions -->
-        <div class="question-block">
-          <div class="question-title">Bio-Mécanique</div>
-          <div class="question-text">Avez-vous des douleurs de dos ou de posture ?</div>
-          <div class="options-group">
-            <label class="option-input">
-              <input type="radio" name="q1" value="Pas du tout" required>
-              <span class="option-label">Pas du tout</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q1" value="Un peu">
-              <span class="option-label">Un peu</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q1" value="Modérément">
-              <span class="option-label">Modérément</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q1" value="Beaucoup">
-              <span class="option-label">Beaucoup</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-title">Bio-Mécanique</div>
-          <div class="question-text">Votre mobilité est-elle limitée ?</div>
-          <div class="options-group">
-            <label class="option-input">
-              <input type="radio" name="q2" value="Pas du tout" required>
-              <span class="option-label">Pas du tout</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q2" value="Un peu">
-              <span class="option-label">Un peu</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q2" value="Modérément">
-              <span class="option-label">Modérément</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q2" value="Beaucoup">
-              <span class="option-label">Beaucoup</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-title">Bio-Chimie</div>
-          <div class="question-text">Souffrez-vous de fatigue chronique ?</div>
-          <div class="options-group">
-            <label class="option-input">
-              <input type="radio" name="q3" value="Pas du tout" required>
-              <span class="option-label">Pas du tout</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q3" value="Un peu">
-              <span class="option-label">Un peu</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q3" value="Modérément">
-              <span class="option-label">Modérément</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q3" value="Beaucoup">
-              <span class="option-label">Beaucoup</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-title">Bio-Chimie</div>
-          <div class="question-text">Avez-vous des troubles digestifs ?</div>
-          <div class="options-group">
-            <label class="option-input">
-              <input type="radio" name="q4" value="Pas du tout" required>
-              <span class="option-label">Pas du tout</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q4" value="Un peu">
-              <span class="option-label">Un peu</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q4" value="Modérément">
-              <span class="option-label">Modérément</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q4" value="Beaucoup">
-              <span class="option-label">Beaucoup</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-title">Bio-Rythme</div>
-          <div class="question-text">Avez-vous du mal à dormir ?</div>
-          <div class="options-group">
-            <label class="option-input">
-              <input type="radio" name="q5" value="Pas du tout" required>
-              <span class="option-label">Pas du tout</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q5" value="Un peu">
-              <span class="option-label">Un peu</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q5" value="Modérément">
-              <span class="option-label">Modérément</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q5" value="Beaucoup">
-              <span class="option-label">Beaucoup</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <div class="question-title">Bio-Rythme</div>
-          <div class="question-text">Vous sentez-vous stressé(e) ?</div>
-          <div class="options-group">
-            <label class="option-input">
-              <input type="radio" name="q6" value="Pas du tout" required>
-              <span class="option-label">Pas du tout</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q6" value="Un peu">
-              <span class="option-label">Un peu</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q6" value="Modérément">
-              <span class="option-label">Modérément</span>
-            </label>
-            <label class="option-input">
-              <input type="radio" name="q6" value="Beaucoup">
-              <span class="option-label">Beaucoup</span>
-            </label>
-          </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary form-submit">Obtenir mes recommandations</button>
+        <button type="submit" class="btn btn-primary form-submit">Recevoir mon diagnostic personnalisé</button>
       </form>
+      <p style="text-align:center; font-size:0.85rem; color:#666; margin-top:16px;">Vos réponses nous permettront de créer un diagnostic détaillé sur vos 3 piliers (Bio-Mécanique, Bio-Chimie, Bio-Rythme) et les recommandations qui en découleront.</p>
     </div>
   </section>
 </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-container">
+      <div class="section-head">
+        <span class="section-eyebrow">Retours d'expérience</span>
+        <h2>Déjà plus de 1 200 suisses transforment leur vitalité</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <span class="testimonial-stars">★★★★★</span>
+          <p class="testimonial-text">"Après 3 semaines de routines de mobilité, mon mal de dos a diminué de 70%. Je ne pensais pas que c'était possible sans séances externes."</p>
+          <span class="testimonial-author">Marc, 42 ans</span>
+          <span class="testimonial-role">Manager, Zurich</span>
+        </div>
+        <div class="testimonial-card">
+          <span class="testimonial-stars">★★★★★</span>
+          <p class="testimonial-text">"La gestion du stress par la cohérence cardiaque m'a vraiment aidé. Je dors mieux et j'aborde mes journées avec plus de sérénité."</p>
+          <span class="testimonial-author">Sophie, 38 ans</span>
+          <span class="testimonial-role">Avocate, Genève</span>
+        </div>
+        <div class="testimonial-card">
+          <span class="testimonial-stars">★★★★★</span>
+          <p class="testimonial-text">"Les conseils nutritionnels simples et les plantes locales ont transformé ma digestion. Plus de ballonnements, plus d'énergie l'après-midi."</p>
+          <span class="testimonial-author">Alain, 55 ans</span>
+          <span class="testimonial-role">Entrepreneur, Lausanne</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container" style="max-width:1100px; margin:0 auto; padding:0 40px;">
+      <div class="section-head">
+        <span class="section-eyebrow">Questions fréquentes</span>
+        <h2>Vos questions sur VITALITÉ 360°</h2>
+      </div>
+      <div class="faq-container">
+        <div class="faq-item open" onclick="toggleFAQ(this)">
+          <div class="faq-question">
+            <span>Qu'est-ce que VITALITÉ 360° exactement ?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            VITALITÉ 360° est une approche holistique suisse qui aligne trois piliers biologiques : la Bio-Mécanique (mobilité et posture), la Bio-Chimie (nutrition et énergie) et la Bio-Rythme (stress et sommeil). Notre mission est de libérer votre énergie naturelle sans alourdir votre vie.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question">
+            <span>Combien de temps ça prend pour voir des résultats ?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Cela dépend de votre situation. Pour les routines de mobilité : 1-2 semaines. Pour la nutrition : 3-4 semaines. Pour le sommeil : 2-3 semaines si vous appliquez les techniques régulièrement. La plupart de nos utilisateurs rapportent des améliorations notables après 4 semaines.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question">
+            <span>Est-ce que c'est gratuit ou payant ?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Le Bilan Vitalité 360° est gratuit et vous donne accès à des recommandations personnalisées. Les contenus détaillés (routines vidéo, plans nutritionnels complets, coaching) seront disponibles via un modèle d'abonnement léger, encore en développement.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question">
+            <span>Pouvez-vous remplacer mon thérapeute ou mon médecin ?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Non. VITALITÉ 360° complète votre approche globale de la santé mais ne remplace jamais un suivi médical ou psychothérapeutique. Nous vous recommandons de continuer à voir vos professionnels de santé habituels. Nos contenus sont validés scientifiquement mais à titre informatif.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question">
+            <span>Comment ça fonctionne avec la sophrologie ou le shiatsu ?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            VITALITÉ 360° s'intègre parfaitement à une thérapie complémentaire. Le Répertoire vous aide à trouver le thérapeute qui convient selon vos besoins. Nos trois piliers et les approches thérapeutiques sont complémentaires et fonctionnent ensemble.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question">
+            <span>Comment mes données sont-elles protégées ?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Vos données personnelles sont traitées conformément à la loi suisse LDSN et la RGPD. Elles ne sont jamais partagées à des tiers sans consentement. Vous pouvez demander la suppression de votre profil à tout moment.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container" style="max-width:1100px; margin:0 auto; padding:0 40px;">
+      <h2>Faites le point en 2 minutes, gratuitement.</h2>
+      <p>Découvrez quel pilier de votre vitalité mérite le plus d'attention aujourd'hui.</p>
+      <button class="btn btn-primary" onclick="switchView('repertoire')">Découvrir le Répertoire</button>
+    </div>
+  </section>
 
 <!-- THERAPY DIRECTORY -->
 <div class="therapy-directory" id="repertoire-view">
@@ -819,8 +1148,12 @@ footer a:hover {
 
 <!-- FOOTER -->
 <footer>
-  <p>&copy; 2024 Vitalité 360. Tous droits réservés.</p>
-  <p>🇨🇭 Créé en Suisse Romande | <a href="#">Politique de confidentialité</a> | <a href="#">Conditions d'utilisation</a></p>
+  <div class="footer-inner">
+    <span class="footer-logo">VITALITÉ 360</span>
+    <span>🇨🇭 Contenu conçu en Suisse Romande</span>
+    <span><a href="#">Politique de confidentialité</a> | <a href="#">Conditions d'utilisation</a></span>
+  </div>
+  <p class="footer-note">© 2026 VITALITÉ 360 — Une approche holistique de la santé et du bien-être. | Données protégées selon la loi suisse LDSN et la RGPD.</p>
 </footer>
 
 <script>
@@ -904,6 +1237,12 @@ const SYMPTOMS = [
 
 let currentFilter = null;
 
+function toggleFAQ(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
 function switchView(view) {
   const landingView = document.getElementById('landing-view');
   const repertoireView = document.getElementById('repertoire-view');
@@ -985,6 +1324,7 @@ function renderTherapies() {
 async function handleDiagnosticSubmit(event) {
   event.preventDefault();
 
+  const prenom = document.getElementById('prenom').value;
   const email = document.getElementById('email').value;
   const phone = document.getElementById('phone').value;
   const messageDiv = document.getElementById('form-message');
@@ -1012,6 +1352,7 @@ async function handleDiagnosticSubmit(event) {
       .from('diagnostic_submissions')
       .insert([
         {
+          prenom: prenom,
           email: email,
           phone: phone,
           responses: responses,
@@ -1024,7 +1365,7 @@ async function handleDiagnosticSubmit(event) {
     }
 
     messageDiv.className = 'form-message success';
-    messageDiv.textContent = '✓ Merci ! Votre diagnostic a été reçu. Nous vous recontacterons bientôt.';
+    messageDiv.textContent = `✓ Merci ${prenom} ! Votre diagnostic a été reçu. Nous vous recontacterons bientôt à ${email}.`;
     messageDiv.style.display = 'block';
     event.target.reset();
   } catch (error) {
