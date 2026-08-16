@@ -731,9 +731,13 @@ footer a:hover { text-decoration: underline; }
 
 /* ANIMATIONS */
 .fade-in-up {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in-up.animate-hidden {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .fade-in-up.visible { opacity: 1; transform: translateY(0); }
 
@@ -1238,9 +1242,16 @@ window.addEventListener('scroll', () => {
 });
 
 // ─── FADE IN ANIMATIONS ──────────────────────────────────
+// On ajoute la classe animate-hidden uniquement si JS est actif
+document.querySelectorAll('.fade-in-up').forEach(el => el.classList.add('animate-hidden'));
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-}, { threshold: 0.15 });
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.remove('animate-hidden');
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 
 // ─── COUNTERS ─────────────────────────────────────────────
