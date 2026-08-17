@@ -74,6 +74,7 @@ nav .logo {
   cursor: pointer;
   font-family: 'Plus Jakarta Sans', sans-serif;
   letter-spacing: -0.3px;
+  margin-right: 32px;
 }
 
 nav .nav-links {
@@ -592,6 +593,7 @@ nav .nav-cta { margin-left: auto; }
   display: none;
 }
 .therapy-directory.active { display: block; }
+
 .back-button {
   display: inline-flex;
   align-items: center;
@@ -645,6 +647,19 @@ nav .nav-cta { margin-left: auto; }
   transition: box-shadow 0.3s, transform 0.3s;
 }
 .therapy-card:hover { box-shadow: 0 8px 20px rgba(27,67,50,0.12); transform: translateY(-3px); }
+.therapy-category-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--eucalyptus);
+  background: rgba(82, 183, 136, 0.1);
+  border: 1px solid rgba(82, 183, 136, 0.3);
+  border-radius: 20px;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+}
 .therapy-card h3 { font-size: 24px; margin-bottom: 12px; color: var(--sage); }
 .therapy-short-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; font-style: italic; }
 .therapy-section { margin-bottom: 24px; }
@@ -671,6 +686,7 @@ nav .nav-cta { margin-left: auto; }
 /* LANDING */
 .landing { display: block; }
 .landing.hidden { display: none; }
+.landing:not(.active) { display: none; }
 
 /* COOKIE BANNER */
 #cookie-banner {
@@ -826,7 +842,7 @@ footer a:hover { text-decoration: underline; }
 </div>
 
 <!-- LANDING VIEW -->
-<div class="landing active" id="landing-view">
+<div class="landing" id="landing-view" style="display:block;">
 
   <!-- HERO -->
   <section class="hero">
@@ -1165,7 +1181,7 @@ footer a:hover { text-decoration: underline; }
 </div><!-- END LANDING -->
 
 <!-- THERAPY DIRECTORY -->
-<div class="therapy-directory" id="repertoire-view">
+<div class="therapy-directory" id="repertoire-view" style="display:none;">
   <button class="back-button" onclick="switchView('landing')">← Retour à l'accueil</button>
   <div class="directory-header">
     <h2>Répertoire des Thérapies</h2>
@@ -1198,21 +1214,150 @@ const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ─── THERAPIES DATA ────────────────────────────────────────
 const THERAPIES = [
-  { id: 'sophrologie', name: 'Sophrologie', shortDesc: 'Relaxation dynamique combinant respiration et visualisation.', symptoms: ['stress', 'sommeil', 'fatigue'], whatIsIt: 'Une méthode psycho-corporelle basée sur des exercices de respiration guidée et de visualisation positive, développée par le Dr Alfonso Caycedo.', forWhat: ['Gestion du stress et de l\'anxiété', 'Amélioration de la qualité du sommeil', 'Récupération après un burn-out'], howItWorks: 'Séance d\'environ 45 min à 1h, guidée par la voix du praticien. En cabinet ou en ligne.', asca: true, rme: true, diploma: true },
-  { id: 'kinesiologie', name: 'Kinésiologie', shortDesc: 'Libération des blocages physiques et émotionnels via le test musculaire.', symptoms: ['stress', 'fatigue', 'dos'], whatIsIt: 'Une technique qui utilise la réponse musculaire du corps pour identifier et libérer les blocages énergétiques, émotionnels et physiques.', forWhat: ['Gestion du stress chronique', 'Douleurs physiques chroniques', 'Amélioration des performances cognitives'], howItWorks: 'Le kinésiologue exerce de légères pressions sur vos bras pour identifier les blocages, puis effectue des corrections.', asca: true, rme: true, diploma: true },
-  { id: 'shiatsu', name: 'Shiatsu', shortDesc: 'Acupression japonaise pour rééquilibrer l\'énergie du corps.', symptoms: ['dos', 'stress', 'fatigue'], whatIsIt: 'Discipline manuelle japonaise basée sur la théorie des méridiens d\'énergie (TCM). Agit sur le système nerveux autonome.', forWhat: ['Soulagement des tensions musculaires profondes', 'Réduction du stress et de l\'anxiété', 'Amélioration de la digestion'], howItWorks: 'Se pratique habillé(e), généralement allongé(e) sur un futon. Pression des pouces et paumes sur les méridiens.', asca: true, rme: true, diploma: true },
-  { id: 'naturopathie', name: 'Naturopathie (MTE)', shortDesc: 'Médecine Traditionnelle Européenne pour rééquilibrer le terrain naturel.', symptoms: ['digestion', 'fatigue', 'migraine'], whatIsIt: 'Système médical holistique visant à renforcer la santé globale par des moyens naturels : alimentation, plantes, hydrologie, etc.', forWhat: ['Troubles digestifs et intestinaux', 'Renforcement du système immunitaire', 'Fatigue chronique et épuisement'], howItWorks: 'Consultation approfondie d\'environ 90 min pour évaluer votre terrain biologique. Protocole sur mesure.', asca: true, rme: true, diploma: true },
-  { id: 'massage', name: 'Massage Thérapeutique', shortDesc: 'Libération des tensions musculaires et amélioration de la circulation.', symptoms: ['dos', 'stress', 'migraine'], whatIsIt: 'Technique de manipulation des tissus mous (muscles, tendons, fascias) pour libérer les tensions et améliorer la circulation sanguine.', forWhat: ['Soulagement des douleurs musculaires chroniques', 'Réduction du stress et du cortisol', 'Amélioration de la flexibilité'], howItWorks: 'Allongé(e) recouvert de draps pendant 60 à 90 min. Différentes techniques selon vos besoins.', asca: true, rme: true, diploma: false },
-  { id: 'reiki', name: 'Reiki', shortDesc: 'Harmonisation énergétique par apposition des mains.', symptoms: ['stress', 'fatigue', 'sommeil'], whatIsIt: 'Pratique énergétique japonaise basée sur la transmission et l\'harmonisation d\'énergie vitale (Ki) via les mains du praticien.', forWhat: ['Détente profonde et relaxation', 'Amélioration de la qualité du sommeil', 'Soutien émotionnel en période difficile'], howItWorks: 'Le praticien place ses mains à quelques centimètres du corps ou en contact très léger pendant une séance de 60 min.', asca: false, rme: false, diploma: false }
+  {
+    id: 'sophrologie',
+    name: 'Sophrologie',
+    category: 'psycho-corporelle',
+    shortDesc: 'Relaxation dynamique combinant respiration et visualisation.',
+    symptoms: ['stress', 'sommeil', 'fatigue'],
+    whatIsIt: 'Une méthode psycho-corporelle basée sur des exercices de respiration guidée, de décontraction musculaire et d\'imagerie mentale.',
+    forWhat: ['Gestion du stress et de l\'anxiété', 'Amélioration de la qualité du sommeil', 'Préparation aux événements importants (examens, accouchement)'],
+    howItWorks: 'Séance d\'environ 1h, guidée par la voix du praticien. Pas de contact physique.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'kinesiologie',
+    name: 'Kinésiologie',
+    category: 'psycho-corporelle',
+    shortDesc: 'Libération des blocages physiques et émotionnels via le test musculaire.',
+    symptoms: ['stress', 'fatigue', 'dos'],
+    whatIsIt: 'Une technique qui utilise la réponse musculaire pour identifier les déséquilibres énergétiques et les tensions émotionnelles.',
+    forWhat: ['Gestion du stress et phobies', 'Douleurs physiques inexpliquées', 'Difficultés d\'apprentissage et de concentration'],
+    howItWorks: 'Le thérapeute exerce de légères pressions sur vos bras/jambes pour tester la tonicité musculaire.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'shiatsu',
+    name: 'Shiatsu',
+    category: 'corporelle',
+    shortDesc: 'Acupression japonaise pour rééquilibrer l\'énergie du corps.',
+    symptoms: ['dos', 'stress', 'fatigue'],
+    whatIsIt: 'Discipline manuelle d\'origine japonaise pratiquant des pressions avec les pouces et paumes sur les méridiens d\'énergie.',
+    forWhat: ['Soulagement des tensions musculaires et du dos', 'Réduction du stress et de la fatigue', 'Amélioration de la circulation'],
+    howItWorks: 'Se pratique habillé en vêtements souples, généralement allongé sur un futon au sol.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'naturopathie-mte',
+    name: 'Naturopathie (MTE)',
+    category: 'systeme-global',
+    shortDesc: 'Médecine Traditionnelle Européenne pour rééquilibrer le terrain naturel.',
+    symptoms: ['digestion', 'fatigue', 'migraine', 'poids', 'femme'],
+    whatIsIt: 'Système médical holistique visant à renforcer la santé globale via la nutrition, la phytothérapie et l\'hygiène de vie.',
+    forWhat: ['Troubles digestifs chroniques', 'Renforcement du système immunitaire', 'Fatigue chronique et rééquilibrage alimentaire'],
+    howItWorks: 'Anamnèse complète (bilan de santé global), conseils d\'hygiène de vie et remèdes naturels.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'acupuncture-mtc',
+    name: 'Acupuncture & MTC',
+    category: 'systeme-global',
+    shortDesc: 'Médecine Traditionnelle Chinoise agissant sur les méridiens énergétiques.',
+    symptoms: ['dos', 'migraine', 'stress', 'sommeil', 'femme', 'digestion'],
+    whatIsIt: 'Pratique millénaire utilisant de très fines aiguilles stimulant des points précis pour restaurer la circulation du Qi (énergie).',
+    forWhat: ['Soulagement des douleurs chroniques et migraines', 'Dérèglements hormonaux et cycle féminin', 'Gestion du stress et insomnies'],
+    howItWorks: 'Pose d\'aiguilles stériles à usage unique sur le corps pendant 20 à 30 minutes pendant que le patient se repose.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'reflexologie',
+    name: 'Réflexologie (Plantaire / Palmaire)',
+    category: 'corporelle',
+    shortDesc: 'Stimulation des zones réflexes pour agir sur l\'ensemble des organes.',
+    symptoms: ['stress', 'digestion', 'sommeil', 'fatigue'],
+    whatIsIt: 'Technique manuelle basée sur le principe que chaque partie du corps est représentée sur les pieds ou les mains.',
+    forWhat: ['Relâchement du stress et tensions nerveuses', 'Troubles du transit et digestion', 'Stimulation de la circulation sanguine et lymphatique'],
+    howItWorks: 'Massages et pressions ciblés sous la plante des pieds ou les paumes de mains.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'hypnose-therapeutique',
+    name: 'Hypnose Éricsonienne / Thérapeutique',
+    category: 'psycho-corporelle',
+    shortDesc: 'Accès à l\'inconscient pour modifier les comportements et soulager les blocages.',
+    symptoms: ['stress', 'sommeil', 'poids', 'migraine'],
+    whatIsIt: 'État de conscience modifié (transe légère) permettant de travailler avec les ressources profondes de l\'inconscient.',
+    forWhat: ['Arrêt du tabac et phobies', 'Gestion de l\'anxiété et du sommeil', 'Gestion du poids et compulsions alimentaires'],
+    howItWorks: 'Échange verbal suivi d\'un état de relaxation profonde guidé par la voix du praticien.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: false }
+  },
+  {
+    id: 'osteopathie',
+    name: 'Ostéopathie / Thérapie Crânio-Sacrale',
+    category: 'corporelle',
+    shortDesc: 'Mobilisation manuelle douce de l\'ensemble de la structure corporelle.',
+    symptoms: ['dos', 'posture', 'migraine'],
+    whatIsIt: 'Approche manuelle visant à rétablir la mobilité des os, articulations, viscères et du rythme crânio-sacral.',
+    forWhat: ['Lumbagos, torticolis et douleurs articulaires', 'Séquelles de traumatismes (whiplash / coup du lapin)', 'Maux de tête d\'origine cervicale'],
+    howItWorks: 'Manipulations ou mobilisations très douces adaptées à la structure du patient.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'ayurveda',
+    name: 'Médecine Ayurvédique',
+    category: 'systeme-global',
+    shortDesc: 'Médecine traditionnelle indienne basée sur l\'équilibre des Doshas.',
+    symptoms: ['digestion', 'fatigue', 'stress', 'poids'],
+    whatIsIt: 'Système de santé global évaluant la constitution individuelle (Vata, Pitta, Kapha) pour maintenir l\'harmonie.',
+    forWhat: ['Troubles digestifs et métaboliques chroniques', 'Fatigue intense et détoxification', 'Gestion du mode de vie et de l\'alimentation'],
+    howItWorks: 'Bilan ayurvédique complet, conseils en hygiène de vie, alimentation adaptative, phytothérapie et massages aux huiles.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'drainage-lymphatique',
+    name: 'Drainage Lymphatique Manuel (Vodder)',
+    category: 'corporelle',
+    shortDesc: 'Massage doux et rythmé stimulant la circulation de la lymphe.',
+    symptoms: ['fatigue', 'posture', 'femme'],
+    whatIsIt: 'Technique de massage doux destinée à accélérer la circulation lymphatique et éliminer les toxines.',
+    forWhat: ['Sensation de jambes lourdes et œdèmes', 'Rétention d\'eau et récupération post-opératoire', 'Renforcement du système immunitaire'],
+    howItWorks: 'Pressions très douces et pompages rythmés sur la peau le long des vaisseaux lymphatiques.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: false }
+  },
+  {
+    id: 'rolfing',
+    name: 'Rolfing (Intégration Structurelle)',
+    category: 'corporelle',
+    shortDesc: 'Travail profond sur les fascias pour réaligner la posture.',
+    symptoms: ['dos', 'posture'],
+    whatIsIt: 'Méthode de travail corporel ciblant les fascias (tissus conjonctifs) pour réorganiser la posture par rapport à la gravité.',
+    forWhat: ['Correction des mauvaises postures chroniques', 'Douleurs musculaires récurrentes', 'Amélioration de l\'amplitude de mouvement'],
+    howItWorks: 'Série structurée de séances de travail manuel appuyé sur les fascias et éducation au mouvement.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'art-therapie',
+    name: 'Art-thérapie',
+    category: 'psycho-corporelle',
+    shortDesc: 'Expression créative (dessin, musique, modelage) à des fins thérapeutiques.',
+    symptoms: ['stress', 'fatigue'],
+    whatIsIt: 'Accompagnement utilisant la création artistique pour extérioriser les émotions et dépasser les blocages.',
+    forWhat: ['Gestion des traumatismes et du deuil', 'Dépression, burn-out et anxiété', 'Développement de l\'estime de soi'],
+    howItWorks: 'Création guidée dans un atelier (aucune compétence artistique préalable requise) suivie d\'un temps d\'échange.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  }
 ];
 
 const SYMPTOMS = [
   { id: 'stress', label: 'Stress & Anxiété' },
-  { id: 'sommeil', label: 'Troubles du sommeil' },
-  { id: 'dos', label: 'Douleurs de dos' },
-  { id: 'digestion', label: 'Troubles digestifs' },
-  { id: 'fatigue', label: 'Fatigue chronique' },
-  { id: 'migraine', label: 'Maux de tête' }
+  { id: 'sommeil', label: 'Troubles du sommeil / Insomnie' },
+  { id: 'dos', label: 'Douleurs musculaires, articulaires & Dos' },
+  { id: 'digestion', label: 'Troubles digestifs & Intestinaux' },
+  { id: 'fatigue', label: 'Fatigue chronique & Burn-out' },
+  { id: 'migraine', label: 'Maux de tête & Migraines' },
+  { id: 'posture', label: 'Tensions posturales & Mobilité' },
+  { id: 'poids', label: 'Gestion du poids & Métabolisme' },
+  { id: 'femme', label: 'Santé de la femme & Hormones' }
 ];
 
 const RECO_MAP = {
@@ -1303,11 +1448,11 @@ function switchView(view) {
   document.querySelectorAll('.landing-link').forEach(l => l.classList.toggle('active', view === 'landing'));
   document.querySelectorAll('.repertoire-link').forEach(l => l.classList.toggle('active', view !== 'landing'));
   if (view === 'landing') {
-    landingView.classList.add('active');
-    repertoireView.classList.remove('active');
+    landingView.style.display = 'block';
+    repertoireView.style.display = 'none';
   } else {
-    landingView.classList.remove('active');
-    repertoireView.classList.add('active');
+    landingView.style.display = 'none';
+    repertoireView.style.display = 'block';
     renderTherapies();
   }
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1332,10 +1477,25 @@ function renderFilterButtons() {
     fb.appendChild(btn);
   });
 }
+const CATEGORY_LABELS = {
+  'psycho-corporelle': 'Psycho-corporelle',
+  'corporelle': 'Corporelle',
+  'systeme-global': 'Système global',
+  'energetique': 'Énergétique'
+};
 function renderTherapyCards(therapies) {
   const grid = document.getElementById('therapies-grid');
-  grid.innerHTML = therapies.map(t => `
+  if (therapies.length === 0) {
+    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-secondary);padding:48px 0;">Aucune thérapie trouvée pour ce symptôme.</p>';
+    return;
+  }
+  grid.innerHTML = therapies.map(t => {
+    const r = t.reconnaissance || {};
+    const hasReco = r.asca || r.rme || r.diplomeFederal;
+    const catLabel = CATEGORY_LABELS[t.category] || t.category || '';
+    return `
     <div class="therapy-card">
+      ${catLabel ? `<span class="therapy-category-badge">${catLabel}</span>` : ''}
       <h3>${t.name}</h3>
       <p class="therapy-short-desc">${t.shortDesc}</p>
       <div class="therapy-section">
@@ -1351,13 +1511,13 @@ function renderTherapyCards(therapies) {
         <p class="therapy-section-text">${t.howItWorks}</p>
       </div>
       <div class="recognition-badges">
-        ${t.asca ? '<span class="badge active">ASCA</span>' : ''}
-        ${t.rme ? '<span class="badge active">RME</span>' : ''}
-        ${t.diploma ? '<span class="badge active">Diplôme Fédéral</span>' : ''}
-        ${!t.asca && !t.rme ? '<span class="badge">Pratique libre</span>' : ''}
+        ${r.asca ? '<span class="badge active">ASCA</span>' : ''}
+        ${r.rme ? '<span class="badge active">RME</span>' : ''}
+        ${r.diplomeFederal ? '<span class="badge active">Diplôme Fédéral</span>' : ''}
+        ${!hasReco ? '<span class="badge">Pratique libre</span>' : ''}
       </div>
     </div>
-  `).join('');
+  `}).join('');
 }
 function renderTherapies() { renderFilterButtons(); renderTherapyCards(THERAPIES); }
 
