@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VITALITÉ 360 — Moins de fatigue, moins de stress, un corps qui se sent mieux.</title>
-<meta name="description" content="Test vitalité gratuit en 2 minutes. Corps, énergie et mental : trouvez ce qui vous épuise vraiment et les solutions naturelles adaptées à votre vie en Suisse.">
-<meta name="keywords" content="fatigue chronique suisse, stress burn-out maman, mal de dos naturel, sophrologie shiatsu genève lausanne, bilan vitalité gratuit">
-<meta property="og:title" content="VITALITÉ 360 — Allégez votre corps, retrouvez votre énergie.">
-<meta property="og:description" content="Test vitalité gratuit en 2 minutes. Des réponses claires, humaines et naturelles pour les mamans et actifs suisses débordés.">
+<title>VITALITÉ 360 — Santé globale, simple et personnalisée en Suisse</title>
+<meta name="description" content="Diagnostic vitalité 360° gratuit en 2 minutes. Méthode fondée sur 3 piliers : Corps & Posture, Énergie & Nutrition, Sommeil & Mental. Répertoire de praticiens certifiés ASCA/RME en Suisse.">
+<meta name="keywords" content="santé holistique suisse, praticiens certifiés asca rme, sophrologie naturopathie ostéopathie, bilan vitalité gratuit, bien-être suisse romande">
+<meta property="og:title" content="VITALITÉ 360 — Votre santé globale, simple et personnalisée">
+<meta property="og:description" content="Méthode 360° fondée sur l'équilibre du corps, de l'énergie et du mental. Diagnostic gratuit + répertoire de praticiens certifiés en Suisse.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_CH">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -821,14 +821,14 @@ footer a:hover { text-decoration: underline; }
 <nav>
   <div class="logo" onclick="switchView('landing')">Vitalité 360</div>
   <ul class="nav-links">
-    <li><a href="#" class="nav-link landing-link active" onclick="event.preventDefault(); switchView('landing');">Accueil</a></li>
-    <li><a href="#" onclick="event.preventDefault(); switchView('landing'); setTimeout(()=>document.getElementById('probleme').scrollIntoView({behavior:'smooth'}),100);">Le Constat</a></li>
-    <li><a href="#" onclick="event.preventDefault(); switchView('landing'); setTimeout(()=>document.getElementById('piliers').scrollIntoView({behavior:'smooth'}),100);">La Méthode</a></li>
+    <li><a href="#accueil" class="nav-link landing-link active" onclick="event.preventDefault(); switchView('landing'); window.scrollTo({top:0,behavior:'smooth'});">Accueil</a></li>
+    <li><a href="#constat" onclick="event.preventDefault(); switchView('landing'); setTimeout(()=>document.getElementById('constat').scrollIntoView({behavior:'smooth'}),100);">Le Constat</a></li>
+    <li><a href="#methode" onclick="event.preventDefault(); switchView('landing'); setTimeout(()=>document.getElementById('methode').scrollIntoView({behavior:'smooth'}),100);">La Méthode</a></li>
     <li><a href="#" class="nav-link repertoire-link" onclick="event.preventDefault(); switchView('repertoire');">Répertoire Praticiens</a></li>
-    <li><a href="#" onclick="event.preventDefault(); document.querySelector('.diagnostic-section').scrollIntoView({behavior:'smooth'}); switchView('landing');">Diagnostic 360</a></li>
+    <li><a href="#diagnostic" onclick="event.preventDefault(); switchView('landing'); setTimeout(()=>document.getElementById('diagnostic').scrollIntoView({behavior:'smooth'}),100);">Diagnostic 360</a></li>
   </ul>
   <div class="nav-cta">
-    <button class="btn btn-primary" style="padding:10px 20px; font-size:13px;" onclick="document.querySelector('.diagnostic-section').scrollIntoView({behavior:'smooth'}); switchView('landing');">Faire mon Test Gratuit</button>
+    <button class="btn btn-primary" style="padding:10px 20px; font-size:13px;" onclick="switchView('landing'); setTimeout(()=>document.getElementById('diagnostic').scrollIntoView({behavior:'smooth'}),100);">Faire mon Test Gratuit</button>
   </div>
   <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -837,29 +837,31 @@ footer a:hover { text-decoration: underline; }
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#" onclick="closeMobileMenu(); switchView('landing');">🏠 Accueil</a>
-  <a href="#" onclick="closeMobileMenu(); switchView('landing'); setTimeout(()=>document.querySelector('.diagnostic-section').scrollIntoView({behavior:'smooth'}),100);">📋 Diagnostic gratuit</a>
-  <a href="#piliers" onclick="closeMobileMenu(); switchView('landing');">🌿 Les 3 Piliers</a>
-  <a href="#" onclick="closeMobileMenu(); switchView('repertoire');">🗂 Répertoire des thérapies</a>
+  <a href="#accueil" onclick="closeMobileMenu(); switchView('landing'); window.scrollTo({top:0,behavior:'smooth'});">🏠 Accueil</a>
+  <a href="#constat" onclick="closeMobileMenu(); switchView('landing'); setTimeout(()=>document.getElementById('constat').scrollIntoView({behavior:'smooth'}),100);">📊 Le Constat</a>
+  <a href="#methode" onclick="closeMobileMenu(); switchView('landing'); setTimeout(()=>document.getElementById('methode').scrollIntoView({behavior:'smooth'}),100);">🌿 La Méthode</a>
+  <a href="#" onclick="closeMobileMenu(); switchView('repertoire');">🗂 Répertoire Praticiens</a>
+  <a href="#diagnostic" onclick="closeMobileMenu(); switchView('landing'); setTimeout(()=>document.getElementById('diagnostic').scrollIntoView({behavior:'smooth'}),100);">📋 Diagnostic 360° Gratuit</a>
 </div>
 
 <!-- LANDING VIEW -->
 <div class="landing" id="landing-view" style="display:block;">
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="swiss-badge">🇨🇭 Pour les mamans &amp; actifs suisses débordés</div>
-    <h1>Allégez votre corps, retrouvez votre énergie, apaisez votre mental.</h1>
-    <p>Entre le travail, les enfants et le quotidien qui ne s'arrête jamais — vous méritez des réponses claires, humaines et naturelles. Pas des listes de contraintes de plus.</p>
+  <section class="hero" id="accueil">
+    <div class="swiss-badge">🇨🇭 Méthode validée — Suisse Romande</div>
+    <h1>Votre santé globale au quotidien : simple, ciblée et personnalisée.</h1>
+    <p>Une méthode 360° fondée sur l'équilibre du corps, de l'énergie et du mental. Des micro-actions concrètes adaptées au rythme de vie en Suisse.</p>
+    <p style="font-size:1rem; font-weight:600; color:rgba(255,255,255,0.9); margin-bottom:32px; margin-top:-12px;">Libérez vos tensions, stabilisez votre vitalité, optimisez votre sommeil.</p>
     <div class="hero-cta">
-      <button class="btn btn-primary" onclick="document.querySelector('.diagnostic-section').scrollIntoView({ behavior: 'smooth' });">
-        Faire mon Test Vitalité Gratuit (2 minutes)
+      <button class="btn btn-primary" onclick="document.querySelector('#diagnostic').scrollIntoView({ behavior: 'smooth' });">
+        Lancer mon Diagnostic 360° Gratuit (2 min)
       </button>
       <button class="btn btn-secondary" onclick="switchView('repertoire');">
-        Découvrir les thérapies
+        Répertoire des praticiens
       </button>
     </div>
-    <p class="proof"><span class="stars">★★★★★</span> Déjà plus de 1 200 personnes soulagées en Suisse Romande.</p>
+    <p class="proof"><span class="stars">★★★★★</span> Plus de 1 200 actifs accompagnés en Suisse Romande.</p>
   </section>
 
   <!-- COUNTERS -->
@@ -874,11 +876,11 @@ footer a:hover { text-decoration: underline; }
     </div>
     <div class="counter-item">
       <span class="counter-number" data-target="2" data-suffix=" min">0</span>
-      <span class="counter-label">Pour recevoir votre bilan gratuit</span>
+      <span class="counter-label">Pour votre Diagnostic 360° complet</span>
     </div>
     <div class="counter-item">
-      <span class="counter-number" data-target="12" data-suffix=" thérapies">0</span>
-      <span class="counter-label">Reconnues en Suisse</span>
+      <span class="counter-number" data-target="12" data-suffix="">0</span>
+      <span class="counter-label">Thérapies certifiées répertoriées</span>
     </div>
   </div>
 
@@ -886,47 +888,47 @@ footer a:hover { text-decoration: underline; }
   <div class="trust-bar">
     <div class="container">
       <span class="trust-item"><span class="trust-icon">🇨🇭</span> Conçu en Suisse Romande</span>
-      <span class="trust-item"><span class="trust-icon">💚</span> Approche naturelle &amp; bienveillante</span>
-      <span class="trust-item"><span class="trust-icon">⏱️</span> Des solutions qui s'adaptent à votre vie</span>
-      <span class="trust-item"><span class="trust-icon">🔒</span> Données protégées RGPD + nLPD</span>
+      <span class="trust-item"><span class="trust-icon">🔬</span> Approche fondée sur des données probantes</span>
+      <span class="trust-item"><span class="trust-icon">✅</span> Praticiens certifiés ASCA / RME</span>
+      <span class="trust-item"><span class="trust-icon">🔒</span> Données protégées — LPD Suisse &amp; RGPD</span>
     </div>
   </div>
 
   <!-- PROBLEMS -->
-  <section class="problem" id="probleme">
+  <section class="problem" id="constat">
     <div class="container" style="max-width:1100px; margin:0 auto; padding:0 40px;">
       <div class="section-head fade-in-up">
-        <span class="section-eyebrow">Vous vous reconnaissez ?</span>
-        <h2>La vie qui s'accumule finit par peser sur le corps.</h2>
+        <span class="section-eyebrow">Le constat</span>
+        <h2>Des signaux que votre corps envoie — et qu'il ne faut pas ignorer.</h2>
       </div>
     </div>
     <div class="problem-grid">
       <div class="problem-card fade-in-up">
-        <span class="emoji">😣</span>
-        <h3>Le corps sous tension</h3>
-        <p>Dos qui tire, nuque raide, épaules bloquées. Vous portez tout — et votre corps le ressent à la fin de la journée.</p>
+        <span class="emoji">⚙️</span>
+        <h3>Tensions physiques persistantes</h3>
+        <p>Douleurs cervicales, lombaires, raideurs matinales. Le corps sous charge chronique finit par se rigidifier — et la posture s'en ressent.</p>
       </div>
       <div class="problem-card fade-in-up">
-        <span class="emoji">☕</span>
-        <h3>Le coup de fatigue permanent</h3>
-        <p>14h, et c'est l'effondrement. Café, sucre, volonté — rien ne tient vraiment. L'énergie n'est plus là.</p>
+        <span class="emoji">🔋</span>
+        <h3>Déficit énergétique chronique</h3>
+        <p>Baisse de vitalité en milieu de journée, dépendance aux stimulants (café, sucre), digestion lente. Des signaux métaboliques à ne pas négliger.</p>
       </div>
       <div class="problem-card fade-in-up">
-        <span class="emoji">🌀</span>
-        <h3>La tête qui ne s'arrête jamais</h3>
-        <p>La to-do liste mentale tourne encore à 23h. Le sommeil est léger, les réveils fréquents, et demain recommence.</p>
+        <span class="emoji">🧠</span>
+        <h3>Surcharge mentale &amp; sommeil dégradé</h3>
+        <p>Difficultés à déconnecter, hypervigilance le soir, réveils nocturnes. Le système nerveux ne parvient plus à basculer en mode récupération.</p>
       </div>
     </div>
-    <p class="problem-closing fade-in-up">Ce n'est pas une fatalité. Ce n'est pas "la vie de parent" ou "l'âge". C'est votre corps qui vous dit qu'il a besoin qu'on s'en occupe — enfin.</p>
+    <p class="problem-closing fade-in-up">Ces trois déséquilibres sont étroitement liés. Les traiter ensemble, avec une approche globale et progressive, est la clé d'une vitalité durable.</p>
   </section>
 
   <!-- SOLUTION / 3 PILIERS -->
-  <section class="solution" id="piliers">
+  <section class="solution" id="methode">
     <div class="solution-container">
       <div class="section-head fade-in-up">
         <span class="section-eyebrow">La méthode Vitalité 360</span>
-        <h2>Trois axes simples. Des résultats concrets.</h2>
-        <p style="color:#555; font-size:1rem; margin-top:12px;">Pas de programme rigide. Pas de jargon. Des solutions qui s'adaptent à votre vie de tous les jours.</p>
+        <h2>Trois piliers interconnectés. Une approche globale.</h2>
+        <p style="color:#555; font-size:1rem; margin-top:12px;">Chaque pilier agit sur les autres. Agir simultanément sur les trois, même à petite dose, produit des résultats visibles et durables.</p>
       </div>
       <div class="pillars">
         <div class="pillar-card fade-in-up">
@@ -934,30 +936,33 @@ footer a:hover { text-decoration: underline; }
             <div class="pillar-icon">🦴</div>
             <h3 class="pillar-title">1. Corps &amp; Posture</h3>
           </div>
-          <h3>Soulager les douleurs sans bloquer 1h de sa journée</h3>
-          <p class="pillar-problem">Dos qui tire, nuque coincée, raideurs au réveil — votre corps stocke la tension.</p>
-          <span class="pillar-solution-label">Ce que ça change</span>
-          <p class="pillar-solution-text">Des mini-routines de 3 à 5 minutes, à faire n'importe où — debout dans la cuisine, assis dans le bureau, entre deux rendez-vous. Votre corps se libère sans que vous ayez à reorganiser votre agenda.</p>
+          <h3>Libérer les tensions structurelles</h3>
+          <p class="pillar-problem">Douleurs cervicales, lombalgies, posture figée devant l'écran. Le corps sous tension chronique perd en mobilité et en résilience.</p>
+          <span class="pillar-solution-label">Approche</span>
+          <p class="pillar-solution-text">Micro-routines de mobilité de 3 à 5 minutes, intégrables dans n'importe quel agenda. Travail sur les fascias, la respiration mécanique et l'alignement postural — sans équipement.</p>
+          <button onclick="document.querySelector('#diagnostic').scrollIntoView({behavior:'smooth'})" style="margin-top:16px; background:none; border:1.5px solid var(--eucalyptus); color:var(--sage); padding:9px 18px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.2s;" onmouseover="this.style.background='var(--eucalyptus)';this.style.color='white'" onmouseout="this.style.background='none';this.style.color='var(--sage)'">Explorer les routines Posture →</button>
         </div>
         <div class="pillar-card fade-in-up">
           <div class="pillar-head">
             <div class="pillar-icon">🌿</div>
             <h3 class="pillar-title">2. Énergie &amp; Nutrition</h3>
           </div>
-          <h3>Nourrir son corps sans régime strict ni prise de tête</h3>
-          <p class="pillar-problem">Le coup de pompe de 14h, les fringales, la digestion lourde — des signaux clairs que votre carburant manque.</p>
-          <span class="pillar-solution-label">Ce que ça change</span>
-          <p class="pillar-solution-text">Quelques ajustements simples dans ce que vous mangez déjà — et les bonnes plantes naturelles pour tenir toute la journée. Pas de calculs, pas d'interdits, juste ce qui fonctionne vraiment.</p>
+          <h3>Stabiliser le métabolisme énergétique</h3>
+          <p class="pillar-problem">Fatigue postprandiale, fluctuations glycémiques, troubles digestifs. Des signaux métaboliques qui indiquent un besoin de rééquilibrage.</p>
+          <span class="pillar-solution-label">Approche</span>
+          <p class="pillar-solution-text">Ajustements nutritionnels ciblés, phytothérapie adaptogène et conseils d'hygiène alimentaire. Sans régime restrictif — avec une approche progressive, validée et adaptée à votre profil.</p>
+          <button onclick="document.querySelector('#diagnostic').scrollIntoView({behavior:'smooth'})" style="margin-top:16px; background:none; border:1.5px solid var(--eucalyptus); color:var(--sage); padding:9px 18px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.2s;" onmouseover="this.style.background='var(--eucalyptus)';this.style.color='white'" onmouseout="this.style.background='none';this.style.color='var(--sage)'">Découvrir l'approche Nutrition →</button>
         </div>
         <div class="pillar-card fade-in-up">
           <div class="pillar-head">
             <div class="pillar-icon">🌙</div>
             <h3 class="pillar-title">3. Sommeil &amp; Mental</h3>
           </div>
-          <h3>Déconnecter le soir et dormir d'une traite</h3>
-          <p class="pillar-problem">La charge mentale ne s'éteint pas en même temps que la lumière. Et la nuit ne suffit plus à récupérer.</p>
-          <span class="pillar-solution-label">Ce que ça change</span>
-          <p class="pillar-solution-text">Des techniques courtes pour calmer le système nerveux avant de dormir — et vous réveiller vraiment reposé(e). Parce qu'un bon sommeil change tout : l'humeur, l'énergie, la patience.</p>
+          <h3>Réguler le système nerveux autonome</h3>
+          <p class="pillar-problem">Hypervigilance vespérale, ruminations, sommeil non-récupérateur. Le système nerveux ne trouve plus la bascule vers le mode parasympathique.</p>
+          <span class="pillar-solution-label">Approche</span>
+          <p class="pillar-solution-text">Techniques de régulation neuro-végétative (cohérence cardiaque, routines de décompression), protocoles de sommeil et gestion de la charge cognitive — applicables dès le premier soir.</p>
+          <button onclick="document.querySelector('#diagnostic').scrollIntoView({behavior:'smooth'})" style="margin-top:16px; background:none; border:1.5px solid var(--eucalyptus); color:var(--sage); padding:9px 18px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.2s;" onmouseover="this.style.background='var(--eucalyptus)';this.style.color='white'" onmouseout="this.style.background='none';this.style.color='var(--sage)'">Tester les outils Sommeil →</button>
         </div>
       </div>
     </div>
@@ -966,8 +971,8 @@ footer a:hover { text-decoration: underline; }
   <!-- DIAGNOSTIC FORM -->
   <section class="diagnostic-section" id="diagnostic">
     <div class="form-container">
-      <h2>Votre Test Vitalité Gratuit</h2>
-      <p class="form-intro">6 questions — 2 minutes. Vous recevez immédiatement un bilan personnalisé sur ce qui vous épuise vraiment, et les premières pistes concrètes pour aller mieux.</p>
+      <h2>Votre Diagnostic Vitalité 360°</h2>
+      <p class="form-intro">6 questions — 2 minutes. Recevez immédiatement votre bilan personnalisé : identification de vos déséquilibres prioritaires et premières recommandations ciblées.</p>
 
       <!-- Progress bar -->
       <div class="form-progress">
@@ -1105,29 +1110,29 @@ footer a:hover { text-decoration: underline; }
     <div class="testimonials-container">
       <div class="section-head">
         <span class="section-eyebrow">Retours d'expérience</span>
-        <h2>Déjà plus de 1 200 personnes se sentent mieux en Suisse</h2>
+        <h2>Ils ont retrouvé leur vitalité — ils témoignent</h2>
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card fade-in-up">
           <span class="testimonial-stars">★★★★★</span>
-          <p class="testimonial-text">"Deux enfants, un poste de cadre — j'avais mal au dos en permanence. En 3 semaines avec les mini-routines, ça a vraiment changé. Je n'aurais pas cru."</p>
-          <span class="testimonial-author">Nadia, 39 ans</span>
-          <span class="testimonial-role">Maman &amp; RH, Lausanne</span>
-          <span class="testimonial-verified">Test Vitalité 360 complété</span>
+          <p class="testimonial-text">"Le diagnostic a identifié des tensions posturales chroniques que j'attribuais à l'âge. Trois semaines après avoir intégré les routines proposées, la différence est nette — sans rien changer à mon agenda."</p>
+          <span class="testimonial-author">Marc, 44 ans</span>
+          <span class="testimonial-role">Directeur de projet, Zurich</span>
+          <span class="testimonial-verified">Diagnostic Vitalité 360° complété</span>
         </div>
         <div class="testimonial-card fade-in-up">
           <span class="testimonial-stars">★★★★★</span>
-          <p class="testimonial-text">"Je dormais très mal depuis des mois. Le bilan m'a montré que c'était surtout mon stress du soir. Les techniques proposées sont simples et ça marche vraiment."</p>
+          <p class="testimonial-text">"Mon profil pointait un déficit de régulation nerveuse le soir. Les techniques de décompression proposées ont amélioré significativement la qualité de mon sommeil en moins de 10 jours."</p>
           <span class="testimonial-author">Sophie, 38 ans</span>
           <span class="testimonial-role">Avocate, Genève</span>
-          <span class="testimonial-verified">Test Vitalité 360 complété</span>
+          <span class="testimonial-verified">Diagnostic Vitalité 360° complété</span>
         </div>
         <div class="testimonial-card fade-in-up">
           <span class="testimonial-stars">★★★★★</span>
-          <p class="testimonial-text">"Le coup de fatigue de 14h disparaît. J'ai juste ajusté ce que je mangeais le midi — rien de révolutionnaire, mais l'effet est bluffant."</p>
-          <span class="testimonial-author">Alain, 55 ans</span>
+          <p class="testimonial-text">"Le bilan a mis le doigt sur un déséquilibre nutritionnel précis. En adaptant mes repas du midi selon les recommandations, la fatigue post-déjeuner a quasiment disparu."</p>
+          <span class="testimonial-author">Alain, 52 ans</span>
           <span class="testimonial-role">Entrepreneur, Lausanne</span>
-          <span class="testimonial-verified">Test Vitalité 360 complété</span>
+          <span class="testimonial-verified">Diagnostic Vitalité 360° complété</span>
         </div>
       </div>
     </div>
@@ -1138,28 +1143,28 @@ footer a:hover { text-decoration: underline; }
     <div class="container" style="max-width:1100px; margin:0 auto; padding:0 40px;">
       <div class="section-head fade-in-up">
         <span class="section-eyebrow">Questions fréquentes</span>
-        <h2>Vos questions sur VITALITÉ 360</h2>
+        <h2>Tout ce que vous devez savoir sur VITALITÉ 360</h2>
       </div>
       <div class="faq-container">
         <div class="faq-item open" onclick="toggleFAQ(this)">
-          <div class="faq-question"><span>C'est quoi exactement VITALITÉ 360 ?</span><span class="faq-icon">▼</span></div>
-          <div class="faq-answer">C'est un guide pratique et bienveillant pour les personnes débordées qui veulent se sentir mieux — sans programme compliqué. On travaille sur trois choses simples : le corps (douleurs, posture), l'énergie (nutrition, digestion) et le mental (stress, sommeil). Et on vous oriente vers les bons thérapeutes si vous avez besoin d'un accompagnement professionnel.</div>
+          <div class="faq-question"><span>Qu'est-ce que VITALITÉ 360 exactement ?</span><span class="faq-icon">▼</span></div>
+          <div class="faq-answer">VITALITÉ 360 est une plateforme de santé préventive et holistique conçue pour les actifs en Suisse. Elle s'articule autour de trois piliers interconnectés — Corps &amp; Posture, Énergie &amp; Nutrition, Sommeil &amp; Mental — et propose un diagnostic personnalisé gratuit ainsi qu'un répertoire de praticiens certifiés (ASCA, RME) sélectionnés en Suisse Romande.</div>
         </div>
         <div class="faq-item" onclick="toggleFAQ(this)">
-          <div class="faq-question"><span>Combien de temps avant de me sentir mieux ?</span><span class="faq-icon">▼</span></div>
-          <div class="faq-answer">La plupart des personnes remarquent une différence en 2 à 3 semaines. Pas de miracle, mais des effets concrets et progressifs. Les douleurs physiques répondent vite aux mini-routines. Le sommeil s'améliore souvent dès la première semaine avec les bonnes techniques. L'énergie remonte en 3-4 semaines avec les ajustements alimentaires.</div>
+          <div class="faq-question"><span>Combien de temps avant de constater des résultats ?</span><span class="faq-icon">▼</span></div>
+          <div class="faq-answer">Les premiers effets sur la gestion de l'énergie et du sommeil sont généralement perceptibles dès 7 jours, lorsque les protocoles sont appliqués régulièrement. L'ancrage des nouvelles habitudes se consolide sur 3 semaines. Pour les résultats structurels (posture, équilibre métabolique), un horizon de 4 à 8 semaines est plus réaliste — et nettement plus durable.</div>
         </div>
         <div class="faq-item" onclick="toggleFAQ(this)">
           <div class="faq-question"><span>Est-ce gratuit ?</span><span class="faq-icon">▼</span></div>
-          <div class="faq-answer">Le test vitalité et votre bilan personnalisé sont 100% gratuits. Le répertoire des thérapies est aussi gratuit. Des contenus plus détaillés (routines guidées, plans personnalisés) seront disponibles prochainement. Vous serez prévenus en avant-première si vous faites le test.</div>
+          <div class="faq-answer">Oui. Le Diagnostic 360° et l'accès au répertoire de praticiens sont 100% gratuits et le resteront. Des modules complémentaires (programmes guidés, suivi personnalisé, coaching) seront proposés ultérieurement sous forme d'abonnement. Les utilisateurs inscrits seront informés en priorité.</div>
         </div>
         <div class="faq-item" onclick="toggleFAQ(this)">
-          <div class="faq-question"><span>Est-ce que ça remplace mon médecin ou mon thérapeute ?</span><span class="faq-icon">▼</span></div>
-          <div class="faq-answer">Non, et ce n'est pas le but. VITALITÉ 360 complète votre suivi de santé existant. Si vous avez besoin d'un professionnel, notre répertoire vous aide à trouver un thérapeute certifié ASCA ou RME près de chez vous en Suisse. Votre médecin reste votre premier interlocuteur pour tout problème de santé.</div>
+          <div class="faq-question"><span>Est-ce que cela remplace un suivi médical ?</span><span class="faq-icon">▼</span></div>
+          <div class="faq-answer">Non. VITALITÉ 360 s'inscrit dans une démarche complémentaire de prévention et d'hygiène de vie — elle ne se substitue pas à une consultation médicale ni à un traitement prescrit. Pour tout symptôme persistant ou pathologie avérée, votre médecin reste l'interlocuteur de référence. Notre répertoire vous aide à identifier les praticiens en médecine complémentaire qui peuvent accompagner votre parcours de santé.</div>
         </div>
         <div class="faq-item" onclick="toggleFAQ(this)">
-          <div class="faq-question"><span>Comment mes données sont-elles protégées ?</span><span class="faq-icon">▼</span></div>
-          <div class="faq-answer">Vos données restent confidentielles et ne sont jamais partagées à des tiers. Elles sont traitées conformément à la loi suisse nLPD et au RGPD européen. Vous pouvez demander la suppression de vos informations à tout moment par email.</div>
+          <div class="faq-question"><span>Comment mes données personnelles sont-elles protégées ?</span><span class="faq-icon">▼</span></div>
+          <div class="faq-answer">Vos données sont traitées en stricte conformité avec la Loi fédérale sur la protection des données (LPD) en vigueur en Suisse, ainsi qu'avec le Règlement Général sur la Protection des Données (RGPD) de l'Union Européenne. Elles ne sont jamais cédées à des tiers à des fins commerciales. Vous disposez d'un droit d'accès, de rectification et de suppression à tout moment, sur simple demande par email.</div>
         </div>
       </div>
     </div>
@@ -1169,9 +1174,9 @@ footer a:hover { text-decoration: underline; }
   <section style="background:#F4F7F5; padding:80px 0;">
     <div style="max-width:1100px; margin:0 auto; padding:0 40px;">
       <div class="section-head fade-in-up">
-        <span class="section-eyebrow">Répertoire Bien-Être Suisse</span>
-        <h2>Trouvez un praticien de confiance près de chez vous</h2>
-        <p style="color:#555; font-size:1rem; margin-top:12px;">Sophrologues, naturopathes, ostéopathes, réflexologues — des professionnels certifiés, sélectionnés pour vous en Suisse.</p>
+        <span class="section-eyebrow">Répertoire Praticiens Suisse</span>
+        <h2>Trouvez un praticien certifié près de chez vous</h2>
+        <p style="color:#555; font-size:1rem; margin-top:12px;">Sophrologues, naturopathes, ostéopathes, réflexologues — des professionnels agréés ASCA / RME, présélectionnés par canton en Suisse.</p>
       </div>
 
       <!-- SEARCH BAR -->
@@ -1221,11 +1226,11 @@ footer a:hover { text-decoration: underline; }
   <!-- FINAL CTA -->
   <section class="final-cta">
     <div class="container" style="max-width:1100px; margin:0 auto; padding:0 40px;">
-      <h2>Prêt(e) à vous sentir mieux — dès cette semaine ?</h2>
-      <p>Faites le test en 2 minutes. Recevez votre bilan personnalisé. Première piste d'action immédiate.</p>
+      <h2>Démarrez votre Diagnostic 360° — gratuitement.</h2>
+      <p>Identifiez votre déséquilibre prioritaire en 2 minutes et recevez vos premières recommandations personnalisées.</p>
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <button class="btn btn-primary" onclick="document.getElementById('diagnostic').scrollIntoView({behavior:'smooth'}); switchView('landing');">Lancer mon Test Gratuit (2 min)</button>
-        <button class="btn btn-secondary" style="border-color:rgba(255,255,255,0.5); color:white;" onclick="switchView('repertoire')">Voir le Répertoire</button>
+        <button class="btn btn-primary" onclick="switchView('landing'); setTimeout(()=>document.getElementById('diagnostic').scrollIntoView({behavior:'smooth'}),100);">Lancer mon Diagnostic 360° (Gratuit)</button>
+        <button class="btn btn-secondary" style="border-color:rgba(255,255,255,0.5); color:white;" onclick="switchView('repertoire')">Répertoire des praticiens</button>
       </div>
     </div>
   </section>
