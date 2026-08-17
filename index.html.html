@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VITALITÉ 360 — Bien-être Holistique en Suisse | Diagnostic Gratuit</title>
+<meta name="description" content="Faites votre bilan vitalité gratuit en 2 minutes. Approche holistique 360° — Bio-Mécanique, Bio-Chimie, Bio-Rythme — pour retrouver énergie et sommeil en Suisse Romande.">
+<meta name="keywords" content="bien-être holistique suisse, thérapies alternatives genève lausanne, sophrologie shiatsu naturopathie, bilan vitalité, santé naturelle suisse romande">
+<meta property="og:title" content="VITALITÉ 360 — Retrouvez votre énergie naturelle">
+<meta property="og:description" content="Diagnostic vitalité gratuit en 2 minutes. Approche 360° scientifiquement validée pour actifs suisses.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CH">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root {
+  --emerald: #1B4332;
+  --sage: #2D6A4F;
+  --eucalyptus: #52B788;
+  --cta: #D97706;
+  --cta-hover: #C86A00;
+  --cream: #F8F9FA;
+  --text-primary: #1B4332;
+  --text-secondary: #555;
+  --border: #E0E0E0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--cream);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 700;
+  color: var(--emerald);
+}
+
+/* SCROLL PROGRESS BAR */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--eucalyptus), var(--cta));
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background: white;
+  box-shadow: 0 1px 2px rgba(27, 67, 50, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav .logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--emerald);
+  cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.3px;
+  margin-right: 32px;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+nav .nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav .nav-links a.active {
+  color: var(--emerald);
+  font-weight: 700;
+}
+
+nav .nav-links a:hover { color: var(--sage); }
+
+nav .nav-cta { margin-left: auto; }
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--emerald);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 57px;
+  left: 0; right: 0;
+  background: white;
+  z-index: 99;
+  box-shadow: 0 8px 24px rgba(27,67,50,0.12);
+  padding: 20px 24px;
+  flex-direction: column;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(27,67,50,0.08);
+  display: block;
+}
+
+/* BUTTONS */
+.btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+.btn-primary { background: var(--cta); color: white; box-shadow: 0 4px 6px rgba(27, 67, 50, 0.1); }
+.btn-primary:hover { background: var(--cta-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(217,119,6,0.25); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.btn-secondary { background: white; color: var(--emerald); border: 2px solid var(--emerald); }
+.btn-secondary:hover { background: var(--cream); }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--sage) 100%);
+  color: white;
+  padding: 80px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(82,183,136,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.swiss-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.hero h1 {
+  font-size: 52px;
+  margin-bottom: 24px;
+  color: white;
+  line-height: 1.2;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero .proof {
+  margin-top: 24px;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.stars { color: #F4A261; letter-spacing: 2px; }
+
+/* COUNTERS */
+.counters-bar {
+  background: var(--emerald);
+  padding: 32px 40px;
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+.counter-item { text-align: center; color: white; }
+.counter-number {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--eucalyptus);
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.counter-label { font-size: 0.82rem; color: rgba(255,255,255,0.75); font-weight: 500; }
+
+/* TRUST BAR */
+.trust-bar {
+  background: #fff;
+  border-bottom: 1px solid rgba(27,67,50,0.08);
+  padding: 26px 0;
+}
+.trust-bar .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 36px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--emerald);
+}
+.trust-item .trust-icon { font-size: 1.2rem; }
+
+/* SECTION HEAD */
+.section-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+.section-eyebrow {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 14px;
+}
+
+/* PROBLEM SECTION */
+.problem { padding: 100px 0 90px; }
+.problem h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto 56px;
+  padding: 0 40px;
+}
+.problem-card {
+  background: white;
+  padding: 40px 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(27, 67, 50, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.problem-card:hover { transform: translateY(-8px); box-shadow: 0 10px 15px rgba(27, 67, 50, 0.15); }
+.problem-card .emoji { font-size: 1.8rem; display: block; margin-bottom: 16px; }
+.problem-card h3 { font-size: 20px; margin-bottom: 16px; }
+.problem-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.problem-closing {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 40px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--emerald);
+  line-height: 1.5;
+}
+
+/* SOLUTION / PILLARS */
+.solution { background: #F1F5F1; padding: 100px 0 110px; }
+.solution-container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+.pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+.pillar-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 30px;
+  box-shadow: 0 4px 16px rgba(27,67,50,0.1);
+  border-top: 4px solid var(--eucalyptus);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pillar-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(27,67,50,0.15); }
+.pillar-card:nth-child(2) { border-top-color: var(--sage); }
+.pillar-card:nth-child(3) { border-top-color: var(--emerald); }
+.pillar-head { display: flex; align-items: center; gap: 14px; }
+.pillar-icon {
+  width: 56px; height: 56px; flex-shrink: 0;
+  border-radius: 14px; background: #E9F5EE;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+}
+.pillar-title {
+  font-family: 'Plus Jakarta Sans',sans-serif;
+  font-weight: 800; font-size: 1.15rem; color: var(--emerald); margin: 0;
+}
+.pillar-card h3 { font-size: 1rem; font-weight: 600; color: var(--sage); margin: 0; }
+.pillar-problem {
+  font-size: 0.9rem; color: #666; font-style: italic;
+  padding-bottom: 12px; border-bottom: 1px solid rgba(27,67,50,0.08); margin: 0;
+}
+.pillar-solution-label { font-size: 0.8rem; font-weight: 700; color: var(--emerald); text-transform: uppercase; letter-spacing: 0.03em; }
+.pillar-solution-text { font-size: 0.95rem; color: #333; margin: 0; }
+
+/* DIAGNOSTIC FORM */
+.diagnostic-section { padding: 80px 40px; background: var(--cream); }
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  padding: 48px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(27, 67, 50, 0.12);
+}
+.form-container h2 { font-size: 32px; margin-bottom: 12px; }
+.form-intro { font-size: 14px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.6; }
+
+/* Progress indicator */
+.form-progress {
+  margin-bottom: 28px;
+}
+.progress-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; font-weight: 600; }
+.progress-bar-wrap { background: #E5E7EB; border-radius: 99px; height: 6px; overflow: hidden; }
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--eucalyptus), var(--sage));
+  border-radius: 99px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+.form-group { margin-bottom: 28px; }
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--emerald);
+}
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.3s;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: var(--eucalyptus);
+  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.1);
+}
+
+.question-block {
+  background: var(--cream);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 1.5px solid transparent;
+  transition: border-color 0.3s;
+}
+.question-block.answered { border-color: rgba(82,183,136,0.4); }
+
+.question-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--eucalyptus);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.question-title::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--eucalyptus); border-radius: 50%; }
+
+.question-text { font-size: 14px; font-weight: 600; color: var(--emerald); margin-bottom: 16px; line-height: 1.5; }
+
+.options-group { display: flex; flex-direction: column; gap: 8px; }
+.option-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  transition: all 0.2s;
+  background: white;
+}
+.option-input:hover { background: rgba(82, 183, 136, 0.05); border-color: rgba(82,183,136,0.3); }
+.option-input input[type="radio"] { cursor: pointer; width: auto; accent-color: var(--eucalyptus); }
+.option-input input[type="radio"]:checked + .option-label { color: var(--emerald); font-weight: 600; }
+.option-label { cursor: pointer; font-size: 13.5px; color: var(--text-secondary); }
+
+.form-message { padding: 16px 20px; border-radius: 10px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; }
+.form-message.success { background: #E8F5E9; color: #1B5E20; border: 1px solid #81C784; }
+.form-message.error { background: #FFEBEE; color: #C62828; border: 1px solid #EF9A9A; }
+
+.form-submit { width: 100%; padding: 16px; font-size: 16px; font-weight: 700; border-radius: 10px; }
+.gdpr-note { text-align:center; font-size:0.78rem; color:#888; margin-top:12px; }
+.gdpr-note a { color: var(--sage); text-decoration: none; }
+
+/* DIAGNOSTIC RESULTS PANEL */
+#diagnostic-results {
+  display: none;
+  margin-top: 0;
+}
+.results-header { text-align: center; margin-bottom: 32px; }
+.results-header h3 { font-size: 1.6rem; color: var(--emerald); margin-bottom: 8px; }
+.results-header p { color: var(--text-secondary); font-size: 0.95rem; }
+
+.pillar-scores { display: flex; flex-direction: column; gap: 18px; margin-bottom: 32px; }
+.pillar-score-item { }
+.pillar-score-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.pillar-score-name { font-weight: 700; font-size: 0.9rem; color: var(--emerald); }
+.pillar-score-pct { font-weight: 700; font-size: 0.9rem; }
+.pillar-score-bar-wrap { background: #E5E7EB; border-radius: 99px; height: 10px; overflow: hidden; }
+.pillar-score-bar { height: 100%; border-radius: 99px; transition: width 1s ease; width: 0; }
+.score-critical .pillar-score-bar { background: #EF4444; }
+.score-moderate .pillar-score-bar { background: #F59E0B; }
+.score-good .pillar-score-bar { background: var(--eucalyptus); }
+.score-critical .pillar-score-pct { color: #EF4444; }
+.score-moderate .pillar-score-pct { color: #F59E0B; }
+.score-good .pillar-score-pct { color: var(--eucalyptus); }
+
+.priority-reco {
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--sage) 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.priority-reco .reco-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
+.priority-reco h4 { color: white; font-size: 1.05rem; margin-bottom: 8px; }
+.priority-reco p { color: rgba(255,255,255,0.85); font-size: 0.88rem; line-height: 1.6; margin: 0; }
+
+.reco-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+.btn-share {
+  background: white;
+  color: var(--emerald);
+  border: 2px solid var(--emerald);
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.btn-share:hover { background: var(--cream); }
+
+/* MEDIA / PRESSE */
+.media-section {
+  background: white;
+  padding: 60px 40px;
+  border-top: 1px solid rgba(27,67,50,0.06);
+}
+.media-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+.media-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #AAA;
+  margin-bottom: 28px;
+}
+.media-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.media-logo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #BBBFC4;
+  letter-spacing: -0.3px;
+  transition: color 0.2s;
+}
+.media-logo:hover { color: var(--sage); }
+.media-logo span { font-style: italic; font-weight: 500; }
+
+/* TESTIMONIALS */
+.testimonials {
+  background: linear-gradient(180deg, var(--emerald) 0%, #163a2a 100%);
+  color: #fff; padding: 100px 0; text-align: center;
+}
+.testimonials-container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+.testimonials .section-head { color: inherit; }
+.testimonials .section-eyebrow { color: #DCE8E1; }
+.testimonials h2 { color: #fff; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 56px; }
+.testimonial-card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 32px; text-align: left;
+  transition: transform 0.3s, background 0.3s;
+}
+.testimonial-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.12); }
+.testimonial-stars { color: #F4A261; font-size: 1rem; letter-spacing: 2px; margin-bottom: 12px; display: block; }
+.testimonial-text { font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px; color: #DCE8E1; }
+.testimonial-author { font-weight: 700; color: #fff; display: block; margin-bottom: 4px; }
+.testimonial-role { font-size: 0.85rem; color: #B7CFC2; }
+.testimonial-verified { font-size: 0.75rem; color: rgba(82,183,136,0.8); margin-top: 8px; display: flex; align-items: center; gap: 4px; }
+.testimonial-verified::before { content: '✓'; font-weight: 700; }
+
+/* FAQ */
+.faq-section { padding: 100px 0; }
+.faq-container { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(27,67,50,0.1); max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(27,67,50,0.08); padding: 24px; cursor: pointer; transition: background 0.2s ease; }
+.faq-item:last-child { border-bottom: none; }
+.faq-item:hover { background: rgba(82,183,136,0.04); }
+.faq-question { font-weight: 700; color: var(--emerald); display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; gap: 16px; }
+.faq-icon { font-size: 1rem; transition: transform 0.3s ease; flex-shrink: 0; color: var(--eucalyptus); }
+.faq-item.open .faq-icon { transform: rotate(180deg); }
+.faq-answer { margin-top: 14px; color: #555; font-size: 0.9rem; line-height: 1.7; display: none; }
+.faq-item.open .faq-answer { display: block; }
+
+/* FINAL CTA */
+.final-cta { background: var(--emerald); color: #fff; padding: 80px 0; text-align: center; }
+.final-cta h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 18px; }
+.final-cta p { color: #DCE8E1; max-width: 520px; margin: 0 auto 34px; }
+
+/* THERAPY DIRECTORY */
+.therapy-directory {
+  padding: 60px 40px;
+  background: white;
+  display: none;
+}
+.therapy-directory.active { display: block; }
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  color: var(--emerald);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color 0.3s;
+}
+.back-button:hover { color: var(--sage); }
+.directory-header { text-align: center; margin-bottom: 48px; }
+.directory-header h2 { font-size: 42px; margin-bottom: 12px; }
+.directory-header p { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; }
+.filter-section { max-width: 1200px; margin: 0 auto 48px; }
+.filter-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sage);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+.filter-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.filter-btn {
+  padding: 10px 20px;
+  border: 2px solid var(--border);
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.3s;
+}
+.filter-btn.active { border-color: var(--eucalyptus); background: var(--eucalyptus); color: white; }
+.filter-btn:hover:not(.active) { border-color: var(--sage); color: var(--sage); }
+.directory-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1200px; margin: 0 auto; }
+.therapy-card {
+  background: var(--cream);
+  padding: 40px;
+  border-radius: 12px;
+  border-top: 4px solid var(--eucalyptus);
+  box-shadow: 0 1px 2px rgba(27, 67, 50, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.therapy-card:hover { box-shadow: 0 8px 20px rgba(27,67,50,0.12); transform: translateY(-3px); }
+.therapy-category-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--eucalyptus);
+  background: rgba(82, 183, 136, 0.1);
+  border: 1px solid rgba(82, 183, 136, 0.3);
+  border-radius: 20px;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+}
+.therapy-card h3 { font-size: 24px; margin-bottom: 12px; color: var(--sage); }
+.therapy-short-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; font-style: italic; }
+.therapy-section { margin-bottom: 24px; }
+.therapy-section-title { font-size: 12px; font-weight: 600; color: var(--emerald); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.therapy-section-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+.therapy-benefits { list-style: none; margin: 0; padding: 0; }
+.therapy-benefits li { font-size: 13px; color: var(--text-secondary); padding-left: 20px; margin-bottom: 8px; position: relative; }
+.therapy-benefits li:before { content: "✓"; position: absolute; left: 0; color: var(--eucalyptus); font-weight: bold; }
+.recognition-badges { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--emerald);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.badge.active { background: var(--emerald); color: white; border-color: var(--emerald); }
+
+/* LANDING */
+.landing { display: block; }
+.landing.hidden { display: none; }
+.landing:not(.active) { display: none; }
+
+/* COOKIE BANNER */
+#cookie-banner {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1A2E25;
+  color: white;
+  padding: 20px 40px;
+  z-index: 9998;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+}
+.cookie-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cookie-text { flex: 1; font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.5; min-width: 200px; }
+.cookie-text a { color: var(--eucalyptus); text-decoration: none; }
+.cookie-btns { display: flex; gap: 12px; flex-shrink: 0; }
+.btn-cookie-accept { background: var(--eucalyptus); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Inter',sans-serif; }
+.btn-cookie-decline { background: transparent; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 8px; font-size: 13px; cursor: pointer; font-family: 'Inter',sans-serif; }
+
+/* FOOTER */
+footer {
+  background: #122A20;
+  color: #9FB8AB;
+  padding: 48px 0 28px;
+  font-size: 0.85rem;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.footer-logo { font-family: 'Plus Jakarta Sans',sans-serif; font-weight: 700; color: #fff; font-size: 1.05rem; }
+.footer-note {
+  text-align: center;
+  margin: 28px auto 0;
+  padding: 20px 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.78rem;
+  color: #6E8779;
+  max-width: 1100px;
+}
+footer a { color: var(--eucalyptus); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ANIMATIONS */
+.fade-in-up {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in-up.animate-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+/* TOAST */
+#toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #1A2E25;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 9997;
+  pointer-events: none;
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* MOBILE */
+@media (max-width: 860px) {
+  nav { padding: 16px 20px; }
+  nav .nav-links { display: none; }
+  nav .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .hero { padding: 60px 24px; }
+  .hero h1 { font-size: 34px; }
+  .counters-bar { gap: 32px; padding: 32px 24px; }
+  .problem-grid { grid-template-columns: 1fr; padding: 0 24px; }
+  .pillars { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .form-container { padding: 28px 20px; }
+  .diagnostic-section { padding: 60px 20px; }
+  .directory-grid { grid-template-columns: 1fr; }
+  .solution-container, .testimonials-container { padding: 0 24px; }
+  .media-logos { gap: 24px; }
+  #cookie-banner { padding: 16px 20px; }
+  .cookie-btns { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <div class="cookie-inner">
+    <p class="cookie-text">Nous utilisons des cookies pour améliorer votre expérience. Vos données sont protégées conformément à la loi suisse nLPD et au RGPD. <a href="#">En savoir plus</a>.</p>
+    <div class="cookie-btns">
+      <button class="btn-cookie-accept" onclick="acceptCookies()">Accepter</button>
+      <button class="btn-cookie-decline" onclick="declineCookies()">Refuser</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="switchView('landing')">Vitalité 360</div>
+  <ul class="nav-links">
+    <li><a href="#" class="nav-link landing-link active" onclick="event.preventDefault(); switchView('landing');">Accueil</a></li>
+    <li><a href="#" onclick="event.preventDefault(); document.querySelector('.diagnostic-section').scrollIntoView({behavior:'smooth'}); switchView('landing');">Diagnostic</a></li>
+    <li><a href="#" class="nav-link repertoire-link" onclick="event.preventDefault(); switchView('repertoire');">Répertoire</a></li>
+  </ul>
+  <div class="nav-cta">
+    <button class="btn btn-primary" style="padding:10px 20px; font-size:13px;" onclick="document.querySelector('.diagnostic-section').scrollIntoView({behavior:'smooth'}); switchView('landing');">Bilan Gratuit</button>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#" onclick="closeMobileMenu(); switchView('landing');">🏠 Accueil</a>
+  <a href="#" onclick="closeMobileMenu(); switchView('landing'); setTimeout(()=>document.querySelector('.diagnostic-section').scrollIntoView({behavior:'smooth'}),100);">📋 Diagnostic gratuit</a>
+  <a href="#piliers" onclick="closeMobileMenu(); switchView('landing');">🌿 Les 3 Piliers</a>
+  <a href="#" onclick="closeMobileMenu(); switchView('repertoire');">🗂 Répertoire des thérapies</a>
+</div>
+
+<!-- LANDING VIEW -->
+<div class="landing" id="landing-view" style="display:block;">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="swiss-badge">🇨🇭 L'approche globale de la santé au quotidien en Suisse</div>
+    <h1>Retrouvez une énergie durable sans alourdir votre emploi du temps.</h1>
+    <p>Une méthode 360° simple, naturelle et scientifiquement validée pour libérer les tensions du bureau, optimiser votre nutrition et retrouver un sommeil réparateur.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary" onclick="document.querySelector('.diagnostic-section').scrollIntoView({ behavior: 'smooth' });">
+        Faire mon Bilan Vitalité 360° (Gratuit — 2 min)
+      </button>
+      <button class="btn btn-secondary" onclick="switchView('repertoire');">
+        Découvrir les thérapies
+      </button>
+    </div>
+    <p class="proof"><span class="stars">★★★★★</span> Déjà plus de 1 200 actifs accompagnés en Suisse Romande.</p>
+  </section>
+
+  <!-- COUNTERS -->
+  <div class="counters-bar">
+    <div class="counter-item">
+      <span class="counter-number" data-target="1200" data-suffix="+">0</span>
+      <span class="counter-label">Personnes accompagnées</span>
+    </div>
+    <div class="counter-item">
+      <span class="counter-number" data-target="94" data-suffix="%">0</span>
+      <span class="counter-label">Satisfaction globale</span>
+    </div>
+    <div class="counter-item">
+      <span class="counter-number" data-target="3" data-suffix=" sem.">0</span>
+      <span class="counter-label">Pour voir les premiers résultats</span>
+    </div>
+    <div class="counter-item">
+      <span class="counter-number" data-target="6" data-suffix=" thérapies">0</span>
+      <span class="counter-label">Références validées en Suisse</span>
+    </div>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <span class="trust-item"><span class="trust-icon">🇨🇭</span> Conçu en Suisse Romande</span>
+      <span class="trust-item"><span class="trust-icon">🧬</span> Approche fondée sur la science</span>
+      <span class="trust-item"><span class="trust-icon">⏱️</span> Format express (3-5 min/jour)</span>
+      <span class="trust-item"><span class="trust-icon">🔒</span> Données protégées RGPD + nLPD</span>
+    </div>
+  </div>
+
+  <!-- PROBLEMS -->
+  <section class="problem" id="probleme">
+    <div class="container" style="max-width:1100px; margin:0 auto; padding:0 40px;">
+      <div class="section-head fade-in-up">
+        <span class="section-eyebrow">Le constat</span>
+        <h2>Vous vous levez déjà fatigué(e) ?</h2>
+      </div>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card fade-in-up">
+        <span class="emoji">💥</span>
+        <h3>Le corps bloqué</h3>
+        <p>Des tensions constantes dans le cou, le haut du dos ou les lombaires après 8 heures assis.</p>
+      </div>
+      <div class="problem-card fade-in-up">
+        <span class="emoji">⚡</span>
+        <h3>Le coup de pompe</h3>
+        <p>Un manque d'énergie critique vers 14h, comblé à coup de cafés et de sucre.</p>
+      </div>
+      <div class="problem-card fade-in-up">
+        <span class="emoji">🤯</span>
+        <h3>Le mental en surrégime</h3>
+        <p>Un cerveau qui tourne à plein régime à 23h et un sommeil morcelé.</p>
+      </div>
+    </div>
+    <p class="problem-closing fade-in-up">Ce n'est pas une fatalité liée à l'âge ou au travail. C'est simplement le signe que vos 3 piliers biologiques ne sont plus alignés.</p>
+  </section>
+
+  <!-- SOLUTION / 3 PILIERS -->
+  <section class="solution" id="piliers">
+    <div class="solution-container">
+      <div class="section-head fade-in-up">
+        <span class="section-eyebrow">La méthode</span>
+        <h2>Les 3 piliers VITALITÉ 360</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar-card fade-in-up">
+          <div class="pillar-head">
+            <div class="pillar-icon">🦴</div>
+            <h3 class="pillar-title">1. Bio-Mécanique</h3>
+          </div>
+          <h3>Corps &amp; posture</h3>
+          <p class="pillar-problem">Nuque raide, mal de dos, posture affaissée sur l'écran.</p>
+          <span class="pillar-solution-label">Solution</span>
+          <p class="pillar-solution-text"><strong>Routines de Mobilité 5-Min :</strong> exercices discrets et guidés à effectuer directement à votre bureau, sans équipement, pour décompresser la colonne.</p>
+        </div>
+        <div class="pillar-card fade-in-up">
+          <div class="pillar-head">
+            <div class="pillar-icon">🌿</div>
+            <h3 class="pillar-title">2. Bio-Chimie</h3>
+          </div>
+          <h3>Nutrition &amp; énergie</h3>
+          <p class="pillar-problem">Digestion lourde, baisse d'énergie, coups de fatigue.</p>
+          <span class="pillar-solution-label">Solution</span>
+          <p class="pillar-solution-text"><strong>Nutrition &amp; Phytothérapie :</strong> conseils micro-nutritionnels simples, assiettes anti-inflammatoires et plantes locales pour stabiliser votre énergie toute la journée.</p>
+        </div>
+        <div class="pillar-card fade-in-up">
+          <div class="pillar-head">
+            <div class="pillar-icon">🌙</div>
+            <h3 class="pillar-title">3. Bio-Rythme</h3>
+          </div>
+          <h3>Stress &amp; sommeil</h3>
+          <p class="pillar-problem">Stress chronique, hyper-vigilance, sommeil perturbé.</p>
+          <span class="pillar-solution-label">Solution</span>
+          <p class="pillar-solution-text"><strong>Régulation Nerveuse :</strong> techniques d'apaisement flash (cohérence cardiaque, routines de soirée) pour passer du mode « alerte » au mode « récupération ».</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGNOSTIC FORM -->
+  <section class="diagnostic-section" id="diagnostic">
+    <div class="form-container">
+      <h2>Votre Bilan Vitalité 360°</h2>
+      <p class="form-intro">Répondez à ces 6 questions pour identifier quel pilier biologique mérite votre attention en priorité.</p>
+
+      <!-- Progress bar -->
+      <div class="form-progress">
+        <div class="progress-label"><span id="progress-text">0 / 6 questions répondues</span></div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill"></div></div>
+      </div>
+
+      <div id="form-message" class="form-message" style="display: none;"></div>
+
+      <form id="diagnostic-form" onsubmit="handleDiagnosticSubmit(event)">
+
+        <div class="question-block" id="qblock-1">
+          <div class="question-title">Bio-Mécanique</div>
+          <div class="question-text">1. Après une journée de travail sur écran, ressentez-vous des douleurs au cou, au haut du dos ou aux lombaires ?</div>
+          <div class="options-group">
+            <label class="option-input"><input type="radio" name="q1" value="critique" data-score="0" required onchange="updateProgress()"><span class="option-label">Oui, c'est une douleur quotidienne et limitante</span></label>
+            <label class="option-input"><input type="radio" name="q1" value="modéré" data-score="40" onchange="updateProgress()"><span class="option-label">Oui, mais c'est supportable</span></label>
+            <label class="option-input"><input type="radio" name="q1" value="faible" data-score="70" onchange="updateProgress()"><span class="option-label">Occasionnellement</span></label>
+            <label class="option-input"><input type="radio" name="q1" value="bon" data-score="100" onchange="updateProgress()"><span class="option-label">Non, je n'ai pas ce problème</span></label>
+          </div>
+        </div>
+
+        <div class="question-block" id="qblock-2">
+          <div class="question-title">Bio-Mécanique</div>
+          <div class="question-text">2. Ressentez-vous une baisse d'énergie significative vers 14h–15h ?</div>
+          <div class="options-group">
+            <label class="option-input"><input type="radio" name="q2" value="critique" data-score="0" required onchange="updateProgress()"><span class="option-label">Oui, tous les jours — j'ai besoin de café ou sucre</span></label>
+            <label class="option-input"><input type="radio" name="q2" value="modéré" data-score="40" onchange="updateProgress()"><span class="option-label">Oui, c'est fréquent</span></label>
+            <label class="option-input"><input type="radio" name="q2" value="faible" data-score="70" onchange="updateProgress()"><span class="option-label">Parfois</span></label>
+            <label class="option-input"><input type="radio" name="q2" value="bon" data-score="100" onchange="updateProgress()"><span class="option-label">Non, je maintiens mon énergie toute la journée</span></label>
+          </div>
+        </div>
+
+        <div class="question-block" id="qblock-3">
+          <div class="question-title">Bio-Chimie</div>
+          <div class="question-text">3. Comment est votre qualité de sommeil ?</div>
+          <div class="options-group">
+            <label class="option-input"><input type="radio" name="q3" value="critique" data-score="0" required onchange="updateProgress()"><span class="option-label">Très mauvais : j'ai du mal à m'endormir et je me réveille plusieurs fois</span></label>
+            <label class="option-input"><input type="radio" name="q3" value="modéré" data-score="40" onchange="updateProgress()"><span class="option-label">Moyen : sommeil léger ou réveils nocturnes</span></label>
+            <label class="option-input"><input type="radio" name="q3" value="faible" data-score="70" onchange="updateProgress()"><span class="option-label">Acceptable mais peut mieux faire</span></label>
+            <label class="option-input"><input type="radio" name="q3" value="bon" data-score="100" onchange="updateProgress()"><span class="option-label">Bon, je dors profondément et me réveille reposé(e)</span></label>
+          </div>
+        </div>
+
+        <div class="question-block" id="qblock-4">
+          <div class="question-title">Bio-Chimie</div>
+          <div class="question-text">4. Comment gérez-vous le stress au quotidien ?</div>
+          <div class="options-group">
+            <label class="option-input"><input type="radio" name="q4" value="critique" data-score="0" required onchange="updateProgress()"><span class="option-label">Je suis très stressé(e) et souvent en hypervigilance</span></label>
+            <label class="option-input"><input type="radio" name="q4" value="modéré" data-score="40" onchange="updateProgress()"><span class="option-label">Je gère, mais le stress m'affecte régulièrement</span></label>
+            <label class="option-input"><input type="radio" name="q4" value="faible" data-score="70" onchange="updateProgress()"><span class="option-label">Stress modéré, je maîtrise la plupart du temps</span></label>
+            <label class="option-input"><input type="radio" name="q4" value="bon" data-score="100" onchange="updateProgress()"><span class="option-label">Je suis relativement serein(e) et zen</span></label>
+          </div>
+        </div>
+
+        <div class="question-block" id="qblock-5">
+          <div class="question-title">Bio-Rythme</div>
+          <div class="question-text">5. Avez-vous des troubles digestifs ou inflammatoires ?</div>
+          <div class="options-group">
+            <label class="option-input"><input type="radio" name="q5" value="critique" data-score="0" required onchange="updateProgress()"><span class="option-label">Oui, régulièrement (ballonnements, constipation, acidité, lourdeur)</span></label>
+            <label class="option-input"><input type="radio" name="q5" value="modéré" data-score="40" onchange="updateProgress()"><span class="option-label">Oui, mais pas tous les jours</span></label>
+            <label class="option-input"><input type="radio" name="q5" value="faible" data-score="70" onchange="updateProgress()"><span class="option-label">Occasionnellement</span></label>
+            <label class="option-input"><input type="radio" name="q5" value="bon" data-score="100" onchange="updateProgress()"><span class="option-label">Non, ma digestion est bonne</span></label>
+          </div>
+        </div>
+
+        <div class="question-block" id="qblock-6">
+          <div class="question-title">Bio-Rythme</div>
+          <div class="question-text">6. Comment décririez-vous votre niveau de vitalité général ?</div>
+          <div class="options-group">
+            <label class="option-input"><input type="radio" name="q6" value="critique" data-score="0" required onchange="updateProgress()"><span class="option-label">Épuisé(e) chroniquement — j'ai du mal à avancer</span></label>
+            <label class="option-input"><input type="radio" name="q6" value="modéré" data-score="40" onchange="updateProgress()"><span class="option-label">Souvent fatigué(e) sans raison claire</span></label>
+            <label class="option-input"><input type="radio" name="q6" value="faible" data-score="70" onchange="updateProgress()"><span class="option-label">Vitalité fluctuante selon les jours</span></label>
+            <label class="option-input"><input type="radio" name="q6" value="bon" data-score="100" onchange="updateProgress()"><span class="option-label">Bonne vitalité en général</span></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="prenom">Votre prénom *</label>
+          <input id="prenom" type="text" required placeholder="Votre prénom">
+        </div>
+        <div class="form-group">
+          <label for="email">Adresse email *</label>
+          <input id="email" type="email" required placeholder="vous@exemple.ch">
+        </div>
+        <div class="form-group">
+          <label for="phone">Téléphone (optionnel)</label>
+          <input id="phone" type="tel" placeholder="+41 79 123 45 67">
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit">Recevoir mon diagnostic personnalisé →</button>
+        <p class="gdpr-note">🔒 Données protégées selon la <a href="#">loi suisse nLPD</a> et le RGPD. Jamais partagées à des tiers.</p>
+      </form>
+
+      <!-- RESULTS (affiché après soumission) -->
+      <div id="diagnostic-results">
+        <div class="results-header">
+          <h3 id="results-title">🎯 Votre diagnostic est prêt, <span id="result-prenom"></span> !</h3>
+          <p>Voici l'état de vos 3 piliers biologiques</p>
+        </div>
+
+        <div class="pillar-scores" id="pillar-scores-display"></div>
+
+        <div class="priority-reco" id="priority-reco-box">
+          <div class="reco-label">Priorité n°1 recommandée</div>
+          <h4 id="reco-title"></h4>
+          <p id="reco-text"></p>
+        </div>
+
+        <div class="reco-actions">
+          <button class="btn btn-primary" onclick="switchView('repertoire')">Découvrir les thérapies adaptées →</button>
+          <button class="btn-share" onclick="shareResults()">📤 Partager mes résultats</button>
+          <button class="btn-share" onclick="resetForm()">🔄 Refaire le bilan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA / PRESSE -->
+  <div class="media-section">
+    <div class="media-inner">
+      <p class="media-title">Approche reconnue par les professionnels de santé</p>
+      <div class="media-logos">
+        <span class="media-logo">RTS <span>Santé</span></span>
+        <span class="media-logo">20<span>Minutes</span></span>
+        <span class="media-logo">Le <span>Temps</span></span>
+        <span class="media-logo">ASCA <span>Suisse</span></span>
+        <span class="media-logo">RME <span>Certifié</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-container">
+      <div class="section-head">
+        <span class="section-eyebrow">Retours d'expérience</span>
+        <h2>Déjà plus de 1 200 suisses transforment leur vitalité</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in-up">
+          <span class="testimonial-stars">★★★★★</span>
+          <p class="testimonial-text">"Après 3 semaines de routines de mobilité, mon mal de dos a diminué de 70%. Je ne pensais pas que c'était possible sans séances externes."</p>
+          <span class="testimonial-author">Marc, 42 ans</span>
+          <span class="testimonial-role">Manager, Zurich</span>
+          <span class="testimonial-verified">Diagnostic Vitalité 360 complété</span>
+        </div>
+        <div class="testimonial-card fade-in-up">
+          <span class="testimonial-stars">★★★★★</span>
+          <p class="testimonial-text">"La gestion du stress par la cohérence cardiaque m'a vraiment aidé. Je dors mieux et j'aborde mes journées avec plus de sérénité."</p>
+          <span class="testimonial-author">Sophie, 38 ans</span>
+          <span class="testimonial-role">Avocate, Genève</span>
+          <span class="testimonial-verified">Diagnostic Vitalité 360 complété</span>
+        </div>
+        <div class="testimonial-card fade-in-up">
+          <span class="testimonial-stars">★★★★★</span>
+          <p class="testimonial-text">"Les conseils nutritionnels simples et les plantes locales ont transformé ma digestion. Plus de ballonnements, plus d'énergie l'après-midi."</p>
+          <span class="testimonial-author">Alain, 55 ans</span>
+          <span class="testimonial-role">Entrepreneur, Lausanne</span>
+          <span class="testimonial-verified">Diagnostic Vitalité 360 complété</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container" style="max-width:1100px; margin:0 auto; padding:0 40px;">
+      <div class="section-head fade-in-up">
+        <span class="section-eyebrow">Questions fréquentes</span>
+        <h2>Vos questions sur VITALITÉ 360°</h2>
+      </div>
+      <div class="faq-container">
+        <div class="faq-item open" onclick="toggleFAQ(this)">
+          <div class="faq-question"><span>Qu'est-ce que VITALITÉ 360° exactement ?</span><span class="faq-icon">▼</span></div>
+          <div class="faq-answer">VITALITÉ 360° est une approche holistique suisse qui aligne trois piliers biologiques : la Bio-Mécanique (mobilité et posture), la Bio-Chimie (nutrition et énergie) et la Bio-Rythme (stress et sommeil). Notre mission est de libérer votre énergie naturelle sans alourdir votre vie.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question"><span>Combien de temps pour voir des résultats ?</span><span class="faq-icon">▼</span></div>
+          <div class="faq-answer">Cela dépend de votre situation. Pour les routines de mobilité : 1-2 semaines. Pour la nutrition : 3-4 semaines. Pour le sommeil : 2-3 semaines si vous appliquez les techniques régulièrement. La plupart de nos utilisateurs rapportent des améliorations notables après 4 semaines.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question"><span>Est-ce gratuit ou payant ?</span><span class="faq-icon">▼</span></div>
+          <div class="faq-answer">Le Bilan Vitalité 360° est entièrement gratuit et vous donne accès à des recommandations personnalisées. Les contenus détaillés (routines vidéo, plans nutritionnels complets, coaching) seront disponibles via un abonnement léger, encore en développement.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question"><span>Pouvez-vous remplacer mon thérapeute ou mon médecin ?</span><span class="faq-icon">▼</span></div>
+          <div class="faq-answer">Non. VITALITÉ 360° complète votre approche globale de la santé mais ne remplace jamais un suivi médical ou psychothérapeutique. Nous vous recommandons de continuer à voir vos professionnels de santé habituels. Nos contenus sont validés scientifiquement mais à titre informatif.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question"><span>Comment ça fonctionne avec la sophrologie ou le shiatsu ?</span><span class="faq-icon">▼</span></div>
+          <div class="faq-answer">VITALITÉ 360° s'intègre parfaitement à une thérapie complémentaire. Le Répertoire vous aide à trouver le thérapeute qui convient selon vos besoins. Nos trois piliers et les approches thérapeutiques sont complémentaires et fonctionnent ensemble.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question"><span>Comment mes données sont-elles protégées ?</span><span class="faq-icon">▼</span></div>
+          <div class="faq-answer">Vos données personnelles sont traitées conformément à la nouvelle loi suisse sur la protection des données (nLPD) et au RGPD européen. Elles ne sont jamais partagées à des tiers sans votre consentement explicite. Vous pouvez demander la suppression de votre profil à tout moment via email.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container" style="max-width:1100px; margin:0 auto; padding:0 40px;">
+      <h2>Faites le point en 2 minutes, gratuitement.</h2>
+      <p>Découvrez quel pilier de votre vitalité mérite le plus d'attention aujourd'hui.</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="document.getElementById('diagnostic').scrollIntoView({behavior:'smooth'}); switchView('landing');">Faire mon bilan maintenant</button>
+        <button class="btn btn-secondary" style="border-color:rgba(255,255,255,0.5); color:white;" onclick="switchView('repertoire')">Voir le Répertoire</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- END LANDING -->
+
+<!-- THERAPY DIRECTORY -->
+<div class="therapy-directory" id="repertoire-view" style="display:none;">
+  <button class="back-button" onclick="switchView('landing')">← Retour à l'accueil</button>
+  <div class="directory-header">
+    <h2>Répertoire des Thérapies</h2>
+    <p>Explorez notre sélection complète de thérapies holistiques reconnues en Suisse.</p>
+  </div>
+  <div class="filter-section">
+    <label class="filter-label">Filtrer par symptôme :</label>
+    <div class="filter-buttons" id="filter-buttons">
+      <button class="filter-btn active" onclick="filterTherapies(null)">Tous</button>
+    </div>
+  </div>
+  <div class="directory-grid" id="therapies-grid"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">VITALITÉ 360</span>
+    <span>🇨🇭 Contenu conçu en Suisse Romande</span>
+    <span><a href="#">Politique de confidentialité</a> · <a href="#">Conditions d'utilisation</a> · <a href="#">Contact</a></span>
+  </div>
+  <p class="footer-note">© 2026 VITALITÉ 360 — Une approche holistique de la santé et du bien-être. | Données protégées selon la loi suisse nLPD et le RGPD.</p>
+</footer>
+
+<script>
+// ─── SUPABASE ────────────────────────────────────────────
+const SUPABASE_URL = 'https://jystwbrmfjlgrzeavpqw.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_ejGD5yLWi7UwIVBVdQj5Hg_2IR1prZK';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// ─── THERAPIES DATA ────────────────────────────────────────
+const THERAPIES = [
+  {
+    id: 'sophrologie',
+    name: 'Sophrologie',
+    category: 'psycho-corporelle',
+    shortDesc: 'Relaxation dynamique combinant respiration et visualisation.',
+    symptoms: ['stress', 'sommeil', 'fatigue'],
+    whatIsIt: 'Une méthode psycho-corporelle basée sur des exercices de respiration guidée, de décontraction musculaire et d\'imagerie mentale.',
+    forWhat: ['Gestion du stress et de l\'anxiété', 'Amélioration de la qualité du sommeil', 'Préparation aux événements importants (examens, accouchement)'],
+    howItWorks: 'Séance d\'environ 1h, guidée par la voix du praticien. Pas de contact physique.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'kinesiologie',
+    name: 'Kinésiologie',
+    category: 'psycho-corporelle',
+    shortDesc: 'Libération des blocages physiques et émotionnels via le test musculaire.',
+    symptoms: ['stress', 'fatigue', 'dos'],
+    whatIsIt: 'Une technique qui utilise la réponse musculaire pour identifier les déséquilibres énergétiques et les tensions émotionnelles.',
+    forWhat: ['Gestion du stress et phobies', 'Douleurs physiques inexpliquées', 'Difficultés d\'apprentissage et de concentration'],
+    howItWorks: 'Le thérapeute exerce de légères pressions sur vos bras/jambes pour tester la tonicité musculaire.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'shiatsu',
+    name: 'Shiatsu',
+    category: 'corporelle',
+    shortDesc: 'Acupression japonaise pour rééquilibrer l\'énergie du corps.',
+    symptoms: ['dos', 'stress', 'fatigue'],
+    whatIsIt: 'Discipline manuelle d\'origine japonaise pratiquant des pressions avec les pouces et paumes sur les méridiens d\'énergie.',
+    forWhat: ['Soulagement des tensions musculaires et du dos', 'Réduction du stress et de la fatigue', 'Amélioration de la circulation'],
+    howItWorks: 'Se pratique habillé en vêtements souples, généralement allongé sur un futon au sol.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'naturopathie-mte',
+    name: 'Naturopathie (MTE)',
+    category: 'systeme-global',
+    shortDesc: 'Médecine Traditionnelle Européenne pour rééquilibrer le terrain naturel.',
+    symptoms: ['digestion', 'fatigue', 'migraine', 'poids', 'femme'],
+    whatIsIt: 'Système médical holistique visant à renforcer la santé globale via la nutrition, la phytothérapie et l\'hygiène de vie.',
+    forWhat: ['Troubles digestifs chroniques', 'Renforcement du système immunitaire', 'Fatigue chronique et rééquilibrage alimentaire'],
+    howItWorks: 'Anamnèse complète (bilan de santé global), conseils d\'hygiène de vie et remèdes naturels.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'acupuncture-mtc',
+    name: 'Acupuncture & MTC',
+    category: 'systeme-global',
+    shortDesc: 'Médecine Traditionnelle Chinoise agissant sur les méridiens énergétiques.',
+    symptoms: ['dos', 'migraine', 'stress', 'sommeil', 'femme', 'digestion'],
+    whatIsIt: 'Pratique millénaire utilisant de très fines aiguilles stimulant des points précis pour restaurer la circulation du Qi (énergie).',
+    forWhat: ['Soulagement des douleurs chroniques et migraines', 'Dérèglements hormonaux et cycle féminin', 'Gestion du stress et insomnies'],
+    howItWorks: 'Pose d\'aiguilles stériles à usage unique sur le corps pendant 20 à 30 minutes pendant que le patient se repose.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'reflexologie',
+    name: 'Réflexologie (Plantaire / Palmaire)',
+    category: 'corporelle',
+    shortDesc: 'Stimulation des zones réflexes pour agir sur l\'ensemble des organes.',
+    symptoms: ['stress', 'digestion', 'sommeil', 'fatigue'],
+    whatIsIt: 'Technique manuelle basée sur le principe que chaque partie du corps est représentée sur les pieds ou les mains.',
+    forWhat: ['Relâchement du stress et tensions nerveuses', 'Troubles du transit et digestion', 'Stimulation de la circulation sanguine et lymphatique'],
+    howItWorks: 'Massages et pressions ciblés sous la plante des pieds ou les paumes de mains.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'hypnose-therapeutique',
+    name: 'Hypnose Éricsonienne / Thérapeutique',
+    category: 'psycho-corporelle',
+    shortDesc: 'Accès à l\'inconscient pour modifier les comportements et soulager les blocages.',
+    symptoms: ['stress', 'sommeil', 'poids', 'migraine'],
+    whatIsIt: 'État de conscience modifié (transe légère) permettant de travailler avec les ressources profondes de l\'inconscient.',
+    forWhat: ['Arrêt du tabac et phobies', 'Gestion de l\'anxiété et du sommeil', 'Gestion du poids et compulsions alimentaires'],
+    howItWorks: 'Échange verbal suivi d\'un état de relaxation profonde guidé par la voix du praticien.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: false }
+  },
+  {
+    id: 'osteopathie',
+    name: 'Ostéopathie / Thérapie Crânio-Sacrale',
+    category: 'corporelle',
+    shortDesc: 'Mobilisation manuelle douce de l\'ensemble de la structure corporelle.',
+    symptoms: ['dos', 'posture', 'migraine'],
+    whatIsIt: 'Approche manuelle visant à rétablir la mobilité des os, articulations, viscères et du rythme crânio-sacral.',
+    forWhat: ['Lumbagos, torticolis et douleurs articulaires', 'Séquelles de traumatismes (whiplash / coup du lapin)', 'Maux de tête d\'origine cervicale'],
+    howItWorks: 'Manipulations ou mobilisations très douces adaptées à la structure du patient.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'ayurveda',
+    name: 'Médecine Ayurvédique',
+    category: 'systeme-global',
+    shortDesc: 'Médecine traditionnelle indienne basée sur l\'équilibre des Doshas.',
+    symptoms: ['digestion', 'fatigue', 'stress', 'poids'],
+    whatIsIt: 'Système de santé global évaluant la constitution individuelle (Vata, Pitta, Kapha) pour maintenir l\'harmonie.',
+    forWhat: ['Troubles digestifs et métaboliques chroniques', 'Fatigue intense et détoxification', 'Gestion du mode de vie et de l\'alimentation'],
+    howItWorks: 'Bilan ayurvédique complet, conseils en hygiène de vie, alimentation adaptative, phytothérapie et massages aux huiles.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'drainage-lymphatique',
+    name: 'Drainage Lymphatique Manuel (Vodder)',
+    category: 'corporelle',
+    shortDesc: 'Massage doux et rythmé stimulant la circulation de la lymphe.',
+    symptoms: ['fatigue', 'posture', 'femme'],
+    whatIsIt: 'Technique de massage doux destinée à accélérer la circulation lymphatique et éliminer les toxines.',
+    forWhat: ['Sensation de jambes lourdes et œdèmes', 'Rétention d\'eau et récupération post-opératoire', 'Renforcement du système immunitaire'],
+    howItWorks: 'Pressions très douces et pompages rythmés sur la peau le long des vaisseaux lymphatiques.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: false }
+  },
+  {
+    id: 'rolfing',
+    name: 'Rolfing (Intégration Structurelle)',
+    category: 'corporelle',
+    shortDesc: 'Travail profond sur les fascias pour réaligner la posture.',
+    symptoms: ['dos', 'posture'],
+    whatIsIt: 'Méthode de travail corporel ciblant les fascias (tissus conjonctifs) pour réorganiser la posture par rapport à la gravité.',
+    forWhat: ['Correction des mauvaises postures chroniques', 'Douleurs musculaires récurrentes', 'Amélioration de l\'amplitude de mouvement'],
+    howItWorks: 'Série structurée de séances de travail manuel appuyé sur les fascias et éducation au mouvement.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  },
+  {
+    id: 'art-therapie',
+    name: 'Art-thérapie',
+    category: 'psycho-corporelle',
+    shortDesc: 'Expression créative (dessin, musique, modelage) à des fins thérapeutiques.',
+    symptoms: ['stress', 'fatigue'],
+    whatIsIt: 'Accompagnement utilisant la création artistique pour extérioriser les émotions et dépasser les blocages.',
+    forWhat: ['Gestion des traumatismes et du deuil', 'Dépression, burn-out et anxiété', 'Développement de l\'estime de soi'],
+    howItWorks: 'Création guidée dans un atelier (aucune compétence artistique préalable requise) suivie d\'un temps d\'échange.',
+    reconnaissance: { asca: true, rme: true, diplomeFederal: true }
+  }
+];
+
+const SYMPTOMS = [
+  { id: 'stress', label: 'Stress & Anxiété' },
+  { id: 'sommeil', label: 'Troubles du sommeil / Insomnie' },
+  { id: 'dos', label: 'Douleurs musculaires, articulaires & Dos' },
+  { id: 'digestion', label: 'Troubles digestifs & Intestinaux' },
+  { id: 'fatigue', label: 'Fatigue chronique & Burn-out' },
+  { id: 'migraine', label: 'Maux de tête & Migraines' },
+  { id: 'posture', label: 'Tensions posturales & Mobilité' },
+  { id: 'poids', label: 'Gestion du poids & Métabolisme' },
+  { id: 'femme', label: 'Santé de la femme & Hormones' }
+];
+
+const RECO_MAP = {
+  'Bio-Mécanique': {
+    title: '🦴 Priorité : Bio-Mécanique — Corps & Posture',
+    text: 'Vos réponses indiquent que les tensions physiques et la posture impactent fortement votre vitalité. Nous recommandons des routines de mobilité 5 minutes au bureau et, si possible, une consultation en kinésiologie ou massage thérapeutique.'
+  },
+  'Bio-Chimie': {
+    title: '🌿 Priorité : Bio-Chimie — Nutrition & Énergie',
+    text: 'Votre profil montre un déséquilibre au niveau nutritionnel et métabolique. Des ajustements alimentaires simples et des plantes adaptogènes locales peuvent transformer votre niveau d\'énergie. La naturopathie est particulièrement adaptée à votre profil.'
+  },
+  'Bio-Rythme': {
+    title: '🌙 Priorité : Bio-Rythme — Stress & Sommeil',
+    text: 'Votre système nerveux est en surrégime. La régulation du stress et l\'amélioration du sommeil doivent être votre priorité. La cohérence cardiaque quotidienne et une séance de sophrologie peuvent avoir un impact rapide et durable.'
+  }
+};
+
+let currentFilter = null;
+let lastDiagnosticResults = null;
+
+// ─── SCROLL PROGRESS ──────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  document.getElementById('scroll-progress').style.width = pct + '%';
+});
+
+// ─── FADE IN ANIMATIONS ──────────────────────────────────
+// On ajoute la classe animate-hidden uniquement si JS est actif
+document.querySelectorAll('.fade-in-up').forEach(el => el.classList.add('animate-hidden'));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.remove('animate-hidden');
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+// ─── COUNTERS ─────────────────────────────────────────────
+function animateCounters() {
+  document.querySelectorAll('.counter-number').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = Date.now();
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    tick();
+  });
+}
+const counterObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) { animateCounters(); counterObserver.disconnect(); }
+}, { threshold: 0.5 });
+const countersBar = document.querySelector('.counters-bar');
+if (countersBar) counterObserver.observe(countersBar);
+
+// ─── FAQ ──────────────────────────────────────────────────
+function toggleFAQ(item) {
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ─── MOBILE MENU ──────────────────────────────────────────
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// ─── VIEW SWITCHER ─────────────────────────────────────────
+function switchView(view) {
+  const landingView = document.getElementById('landing-view');
+  const repertoireView = document.getElementById('repertoire-view');
+  document.querySelectorAll('.landing-link').forEach(l => l.classList.toggle('active', view === 'landing'));
+  document.querySelectorAll('.repertoire-link').forEach(l => l.classList.toggle('active', view !== 'landing'));
+  if (view === 'landing') {
+    landingView.style.display = 'block';
+    repertoireView.style.display = 'none';
+  } else {
+    landingView.style.display = 'none';
+    repertoireView.style.display = 'block';
+    renderTherapies();
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  closeMobileMenu();
+}
+
+// ─── DIRECTORY ────────────────────────────────────────────
+function filterTherapies(symptomId) {
+  currentFilter = symptomId;
+  const filtered = symptomId ? THERAPIES.filter(t => t.symptoms.includes(symptomId)) : THERAPIES;
+  renderFilterButtons();
+  renderTherapyCards(filtered);
+}
+function renderFilterButtons() {
+  const fb = document.getElementById('filter-buttons');
+  fb.innerHTML = '<button class="filter-btn ' + (currentFilter === null ? 'active' : '') + '" onclick="filterTherapies(null)">Tous</button>';
+  SYMPTOMS.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn ' + (currentFilter === s.id ? 'active' : '');
+    btn.textContent = s.label;
+    btn.onclick = () => filterTherapies(s.id);
+    fb.appendChild(btn);
+  });
+}
+const CATEGORY_LABELS = {
+  'psycho-corporelle': 'Psycho-corporelle',
+  'corporelle': 'Corporelle',
+  'systeme-global': 'Système global',
+  'energetique': 'Énergétique'
+};
+function renderTherapyCards(therapies) {
+  const grid = document.getElementById('therapies-grid');
+  if (therapies.length === 0) {
+    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-secondary);padding:48px 0;">Aucune thérapie trouvée pour ce symptôme.</p>';
+    return;
+  }
+  grid.innerHTML = therapies.map(t => {
+    const r = t.reconnaissance || {};
+    const hasReco = r.asca || r.rme || r.diplomeFederal;
+    const catLabel = CATEGORY_LABELS[t.category] || t.category || '';
+    return `
+    <div class="therapy-card">
+      ${catLabel ? `<span class="therapy-category-badge">${catLabel}</span>` : ''}
+      <h3>${t.name}</h3>
+      <p class="therapy-short-desc">${t.shortDesc}</p>
+      <div class="therapy-section">
+        <div class="therapy-section-title">Qu'est-ce que c'est ?</div>
+        <p class="therapy-section-text">${t.whatIsIt}</p>
+      </div>
+      <div class="therapy-section">
+        <div class="therapy-section-title">Pour quoi ?</div>
+        <ul class="therapy-benefits">${t.forWhat.map(b => `<li>${b}</li>`).join('')}</ul>
+      </div>
+      <div class="therapy-section">
+        <div class="therapy-section-title">Comment ça fonctionne ?</div>
+        <p class="therapy-section-text">${t.howItWorks}</p>
+      </div>
+      <div class="recognition-badges">
+        ${r.asca ? '<span class="badge active">ASCA</span>' : ''}
+        ${r.rme ? '<span class="badge active">RME</span>' : ''}
+        ${r.diplomeFederal ? '<span class="badge active">Diplôme Fédéral</span>' : ''}
+        ${!hasReco ? '<span class="badge">Pratique libre</span>' : ''}
+      </div>
+    </div>
+  `}).join('');
+}
+function renderTherapies() { renderFilterButtons(); renderTherapyCards(THERAPIES); }
+
+// ─── FORM PROGRESS ────────────────────────────────────────
+function updateProgress() {
+  let answered = 0;
+  for (let i = 1; i <= 6; i++) {
+    const checked = document.querySelector(`input[name="q${i}"]:checked`);
+    if (checked) {
+      answered++;
+      document.getElementById('qblock-' + i).classList.add('answered');
+    }
+  }
+  const pct = (answered / 6) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = answered + ' / 6 questions répondues';
+}
+
+// ─── DIAGNOSTIC SUBMIT ────────────────────────────────────
+async function handleDiagnosticSubmit(event) {
+  event.preventDefault();
+  const prenom = document.getElementById('prenom').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const messageDiv = document.getElementById('form-message');
+  const submitBtn = event.target.querySelector('button[type="submit"]');
+
+  // Collect responses + compute pillar scores
+  const responses = [];
+  const pillarScores = { 'Bio-Mécanique': [], 'Bio-Chimie': [], 'Bio-Rythme': [] };
+  const pillarMap = ['Bio-Mécanique', 'Bio-Mécanique', 'Bio-Chimie', 'Bio-Chimie', 'Bio-Rythme', 'Bio-Rythme'];
+  const questionTexts = [
+    'Douleurs posturales après écran',
+    'Baisse d\'énergie à 14h-15h',
+    'Qualité du sommeil',
+    'Gestion du stress',
+    'Troubles digestifs',
+    'Vitalité générale'
+  ];
+  for (let i = 1; i <= 6; i++) {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    const score = selected ? parseInt(selected.dataset.score) : 0;
+    const pillar = pillarMap[i - 1];
+    pillarScores[pillar].push(score);
+    responses.push({ pillar, question: questionTexts[i-1], answer: selected ? selected.value : '', score });
+  }
+
+  // Average score per pillar
+  const avgScores = {};
+  for (const [p, scores] of Object.entries(pillarScores)) {
+    avgScores[p] = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+  }
+  // Find weakest pillar
+  const weakestPillar = Object.entries(avgScores).sort((a, b) => a[1] - b[1])[0][0];
+  lastDiagnosticResults = { prenom, avgScores, weakestPillar };
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = '⏳ Analyse en cours…';
+
+  try {
+    const { error } = await supabase.from('diagnostic_submissions').insert([{
+      prenom, email, phone, responses,
+      submitted_at: new Date().toISOString()
+    }]);
+    if (error) throw error;
+
+    // Show results
+    showDiagnosticResults(prenom, avgScores, weakestPillar);
+    event.target.style.display = 'none';
+    messageDiv.style.display = 'none';
+  } catch (error) {
+    // If Supabase fails, still show results
+    showDiagnosticResults(prenom, avgScores, weakestPillar);
+    event.target.style.display = 'none';
+    console.error('Supabase error (non-blocking):', error);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Recevoir mon diagnostic personnalisé →';
+  }
+}
+
+function showDiagnosticResults(prenom, avgScores, weakestPillar) {
+  document.getElementById('result-prenom').textContent = prenom;
+  document.getElementById('diagnostic-results').style.display = 'block';
+
+  // Render pillar bars
+  const container = document.getElementById('pillar-scores-display');
+  container.innerHTML = '';
+  const pillarEmoji = { 'Bio-Mécanique': '🦴', 'Bio-Chimie': '🌿', 'Bio-Rythme': '🌙' };
+  for (const [pillar, score] of Object.entries(avgScores)) {
+    const cls = score < 40 ? 'score-critical' : score < 70 ? 'score-moderate' : 'score-good';
+    const label = score < 40 ? 'Priorité élevée' : score < 70 ? 'À améliorer' : 'Bon état';
+    const div = document.createElement('div');
+    div.className = 'pillar-score-item ' + cls;
+    div.innerHTML = `
+      <div class="pillar-score-header">
+        <span class="pillar-score-name">${pillarEmoji[pillar]} ${pillar}</span>
+        <span class="pillar-score-pct">${label} (${score}%)</span>
+      </div>
+      <div class="pillar-score-bar-wrap">
+        <div class="pillar-score-bar" style="width:0%" data-width="${score}%"></div>
+      </div>`;
+    container.appendChild(div);
+  }
+  // Animate bars after insert
+  setTimeout(() => {
+    container.querySelectorAll('.pillar-score-bar').forEach(bar => {
+      bar.style.width = bar.dataset.width;
+    });
+  }, 100);
+
+  // Reco
+  const reco = RECO_MAP[weakestPillar];
+  document.getElementById('reco-title').textContent = reco.title;
+  document.getElementById('reco-text').textContent = reco.text;
+
+  // Scroll to results
+  document.getElementById('diagnostic-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function resetForm() {
+  const form = document.getElementById('diagnostic-form');
+  form.reset();
+  form.style.display = '';
+  document.getElementById('diagnostic-results').style.display = 'none';
+  document.getElementById('progress-fill').style.width = '0%';
+  document.getElementById('progress-text').textContent = '0 / 6 questions répondues';
+  document.querySelectorAll('.question-block').forEach(b => b.classList.remove('answered'));
+  lastDiagnosticResults = null;
+}
+
+async function shareResults() {
+  if (!lastDiagnosticResults) return;
+  const { prenom, avgScores, weakestPillar } = lastDiagnosticResults;
+  const text = `🌿 Mon Bilan Vitalité 360° — ${prenom}\n` +
+    Object.entries(avgScores).map(([p, s]) => `• ${p} : ${s}%`).join('\n') +
+    `\n\n👉 Priorité : ${weakestPillar}\n\nFaites votre bilan sur https://vitalite360-app.vercel.app`;
+  if (navigator.share) {
+    try { await navigator.share({ title: 'Mon Bilan Vitalité 360°', text }); return; } catch(e) {}
+  }
+  await navigator.clipboard.writeText(text);
+  showToast('✓ Résultats copiés dans le presse-papiers !');
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ─── COOKIE BANNER ────────────────────────────────────────
+function acceptCookies() { localStorage.setItem('cookies', 'accepted'); document.getElementById('cookie-banner').style.display = 'none'; }
+function declineCookies() { localStorage.setItem('cookies', 'declined'); document.getElementById('cookie-banner').style.display = 'none'; }
+window.addEventListener('load', () => {
+  if (!localStorage.getItem('cookies')) {
+    setTimeout(() => { document.getElementById('cookie-banner').style.display = 'block'; }, 1500);
+  }
+});
+</script>
+</body>
+</html>
