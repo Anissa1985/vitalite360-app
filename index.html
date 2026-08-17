@@ -821,14 +821,14 @@ footer a:hover { text-decoration: underline; }
 <nav>
   <div class="logo" onclick="switchView('landing')">Vitalité 360</div>
   <ul class="nav-links">
-    <li><a href="#accueil" class="nav-link landing-link active" onclick="event.preventDefault(); switchView('landing'); window.scrollTo({top:0,behavior:'smooth'});">Accueil</a></li>
-    <li><a href="#constat" onclick="event.preventDefault(); switchView('landing'); setTimeout(()=>document.getElementById('constat').scrollIntoView({behavior:'smooth'}),100);">Le Constat</a></li>
-    <li><a href="#methode" onclick="event.preventDefault(); switchView('landing'); setTimeout(()=>document.getElementById('methode').scrollIntoView({behavior:'smooth'}),100);">La Méthode</a></li>
+    <li><a href="#accueil" class="nav-link landing-link active" onclick="event.preventDefault(); navTo('accueil');">Accueil</a></li>
+    <li><a href="#constat" onclick="event.preventDefault(); navTo('constat');">Le Constat</a></li>
+    <li><a href="#methode" onclick="event.preventDefault(); navTo('methode');">La Méthode</a></li>
     <li><a href="#" class="nav-link repertoire-link" onclick="event.preventDefault(); switchView('repertoire');">Répertoire Praticiens</a></li>
-    <li><a href="#diagnostic" onclick="event.preventDefault(); switchView('landing'); setTimeout(()=>document.getElementById('diagnostic').scrollIntoView({behavior:'smooth'}),100);">Diagnostic 360</a></li>
+    <li><a href="#diagnostic" onclick="event.preventDefault(); navTo('diagnostic');">Diagnostic 360</a></li>
   </ul>
   <div class="nav-cta">
-    <button class="btn btn-primary" style="padding:10px 20px; font-size:13px;" onclick="switchView('landing'); setTimeout(()=>document.getElementById('diagnostic').scrollIntoView({behavior:'smooth'}),100);">Faire mon Test Gratuit</button>
+    <button class="btn btn-primary" style="padding:10px 20px; font-size:13px;" onclick="navTo('diagnostic');">Faire mon Test Gratuit</button>
   </div>
   <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -1514,6 +1514,27 @@ function switchView(view) {
   }
   window.scrollTo({ top: 0, behavior: 'smooth' });
   closeMobileMenu();
+}
+
+// ─── NAV SCROLL HELPER ────────────────────────────────────
+// Garantit que la vue landing est visible AVANT de scroller vers l'ancre
+function navTo(sectionId) {
+  closeMobileMenu();
+  const landingView = document.getElementById('landing-view');
+  const alreadyVisible = landingView.style.display !== 'none';
+  if (!alreadyVisible) {
+    switchView('landing');
+    // Attendre que le DOM ait rendu la vue avant de scroller
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  } else {
+    const el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 
 // ─── DIRECTORY ────────────────────────────────────────────
