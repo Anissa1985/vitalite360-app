@@ -311,11 +311,144 @@ nav .nav-cta { margin-left: auto; }
   box-shadow: 0 4px 6px rgba(27, 67, 50, 0.1);
   text-align: center;
   transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
-.problem-card:hover { transform: translateY(-8px); box-shadow: 0 10px 15px rgba(27, 67, 50, 0.15); }
+.problem-card::after {
+  content: 'Découvrir →';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, var(--eucalyptus), var(--sage));
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.problem-card:hover::after { transform: translateY(0); }
+.problem-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(27, 67, 50, 0.2); border-bottom: 3px solid var(--eucalyptus); }
 .problem-card .emoji { font-size: 1.8rem; display: block; margin-bottom: 16px; }
 .problem-card h3 { font-size: 20px; margin-bottom: 16px; }
 .problem-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+/* ─── AXE DETAIL VIEW ───────────────────────────────────── */
+.axe-view {
+  min-height: 100vh;
+  background: var(--cream);
+}
+.axe-hero {
+  padding: 60px 40px 48px;
+  text-align: center;
+  position: relative;
+}
+.axe-hero.corps { background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%); color: white; }
+.axe-hero.energie { background: linear-gradient(135deg, #92400E 0%, #D97706 100%); color: white; }
+.axe-hero.mental { background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 100%); color: white; }
+.axe-hero h1 { font-size: clamp(28px, 5vw, 48px); color: white; margin-bottom: 16px; }
+.axe-hero .axe-subtitle { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto 32px; }
+.axe-hero .axe-emoji { font-size: 3.5rem; display: block; margin-bottom: 20px; }
+.axe-symptomes-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 24px;
+}
+.axe-symptomes-pills .pill {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.axe-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+.axe-section-title {
+  font-size: 26px;
+  color: var(--emerald);
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+.axe-explainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 56px;
+}
+@media (max-width: 768px) { .axe-explainer { grid-template-columns: 1fr; } }
+.axe-explainer-card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(27,67,50,0.08);
+}
+.axe-explainer-card h4 {
+  font-size: 16px;
+  color: var(--sage);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.axe-explainer-card p, .axe-explainer-card ul { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+.axe-explainer-card ul { padding-left: 20px; }
+.axe-explainer-card ul li { margin-bottom: 8px; }
+.axe-therapies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 56px;
+}
+.axe-therapy-card {
+  background: white;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 2px 8px rgba(27,67,50,0.08);
+  border-left: 4px solid var(--eucalyptus);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.axe-therapy-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(27,67,50,0.12); }
+.axe-therapy-card h3 { font-size: 18px; margin-bottom: 8px; }
+.axe-therapy-card .therapy-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
+.axe-therapy-card .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.axe-therapy-card .badge { font-size: 11px; padding: 3px 8px; border-radius: 100px; font-weight: 600; }
+.axe-therapy-card .badge.active { background: #D1FAE5; color: #065F46; }
+.axe-cta-block {
+  background: linear-gradient(135deg, var(--emerald), var(--sage));
+  border-radius: 16px;
+  padding: 48px 40px;
+  text-align: center;
+  color: white;
+}
+.axe-cta-block h3 { color: white; font-size: 24px; margin-bottom: 12px; }
+.axe-cta-block p { opacity: 0.9; margin-bottom: 28px; font-size: 16px; }
+.back-button-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+}
+.back-button-top:hover { background: rgba(255,255,255,0.25); }
 .problem-closing {
   text-align: center;
   max-width: 600px;
@@ -903,17 +1036,17 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
     <div class="problem-grid">
-      <div class="problem-card fade-in-up">
+      <div class="problem-card fade-in-up" onclick="switchView('axe-corps')" role="button" tabindex="0" aria-label="Découvrir l'axe Corps & Posture">
         <span class="emoji">⚙️</span>
         <h3>Tensions physiques persistantes</h3>
         <p>Douleurs cervicales, lombaires, raideurs matinales. Le corps sous charge chronique finit par se rigidifier — et la posture s'en ressent.</p>
       </div>
-      <div class="problem-card fade-in-up">
+      <div class="problem-card fade-in-up" onclick="switchView('axe-energie')" role="button" tabindex="0" aria-label="Découvrir l'axe Énergie & Nutrition">
         <span class="emoji">🔋</span>
         <h3>Déficit énergétique chronique</h3>
         <p>Baisse de vitalité en milieu de journée, dépendance aux stimulants (café, sucre), digestion lente. Des signaux métaboliques à ne pas négliger.</p>
       </div>
-      <div class="problem-card fade-in-up">
+      <div class="problem-card fade-in-up" onclick="switchView('axe-mental')" role="button" tabindex="0" aria-label="Découvrir l'axe Sommeil & Mental">
         <span class="emoji">🧠</span>
         <h3>Surcharge mentale &amp; sommeil dégradé</h3>
         <p>Difficultés à déconnecter, hypervigilance le soir, réveils nocturnes. Le système nerveux ne parvient plus à basculer en mode récupération.</p>
@@ -1253,6 +1386,141 @@ footer a:hover { text-decoration: underline; }
   <div class="directory-grid" id="therapies-grid"></div>
 </div>
 
+<!-- AXE CORPS & POSTURE -->
+<div class="axe-view" id="axe-corps-view" style="display:none;">
+  <div class="axe-hero corps">
+    <button class="back-button-top" onclick="switchView('landing')">← Retour</button>
+    <span class="axe-emoji">🦴</span>
+    <h1>Corps &amp; Posture</h1>
+    <p class="axe-subtitle">Votre corps stocke les tensions. Quand il parle, il faut l'écouter — avant qu'il crie.</p>
+    <div class="axe-symptomes-pills">
+      <span class="pill">Douleurs cervicales & lombaires</span>
+      <span class="pill">Raideurs matinales</span>
+      <span class="pill">Tensions posturales</span>
+      <span class="pill">Mobilité réduite</span>
+      <span class="pill">Migraines de tension</span>
+    </div>
+  </div>
+  <div class="axe-content">
+    <h2 class="axe-section-title">Comprendre l'axe Corps &amp; Posture</h2>
+    <div class="axe-explainer">
+      <div class="axe-explainer-card">
+        <h4>Ce que vous ressentez</h4>
+        <ul>
+          <li>Douleurs récurrentes dans le dos, les épaules, la nuque</li>
+          <li>Raideurs au lever le matin qui mettent du temps à disparaître</li>
+          <li>Sensation de corps "bloqué" ou de manque de souplesse</li>
+          <li>Maux de tête liés à des tensions musculaires</li>
+          <li>Fatigue physique même après une nuit de sommeil</li>
+        </ul>
+      </div>
+      <div class="axe-explainer-card">
+        <h4>Pourquoi ça arrive</h4>
+        <p>Le corps sous charge chronique (sédentarité, stress, mauvaises postures au travail) finit par se rigidifier. Les fascias se condensent, la circulation ralentit, et la douleur s'installe — d'abord occasionnellement, puis durablement. Ces signaux sont des invitations au changement, pas des fatalités.</p>
+      </div>
+    </div>
+
+    <h2 class="axe-section-title">Thérapies recommandées pour cet axe</h2>
+    <div class="axe-therapies-grid" id="axe-corps-therapies"></div>
+
+    <div class="axe-cta-block">
+      <h3>Votre corps mérite une attention globale</h3>
+      <p>Notre diagnostic 360° identifie précisément quels déséquilibres agir en priorité — et vous oriente vers les bonnes thérapies.</p>
+      <button class="cta-btn" onclick="navTo('diagnostic')">Faire mon diagnostic gratuit →</button>
+    </div>
+  </div>
+</div>
+
+<!-- AXE ÉNERGIE & NUTRITION -->
+<div class="axe-view" id="axe-energie-view" style="display:none;">
+  <div class="axe-hero energie">
+    <button class="back-button-top" onclick="switchView('landing')" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);">← Retour</button>
+    <span class="axe-emoji">⚡</span>
+    <h1>Énergie &amp; Nutrition</h1>
+    <p class="axe-subtitle">Votre carburant est en baisse. Ce n'est pas une question de volonté — c'est une question de biologie.</p>
+    <div class="axe-symptomes-pills">
+      <span class="pill">Fatigue chronique</span>
+      <span class="pill">Troubles digestifs</span>
+      <span class="pill">Dépendance café / sucre</span>
+      <span class="pill">Gestion du poids</span>
+      <span class="pill">Santé féminine & hormones</span>
+    </div>
+  </div>
+  <div class="axe-content">
+    <h2 class="axe-section-title">Comprendre l'axe Énergie &amp; Nutrition</h2>
+    <div class="axe-explainer">
+      <div class="axe-explainer-card">
+        <h4>Ce que vous ressentez</h4>
+        <ul>
+          <li>Coup de fatigue systématique en milieu de journée</li>
+          <li>Besoin de café ou de sucre pour "tenir"</li>
+          <li>Digestion lente, ballonnements, inconfort intestinal</li>
+          <li>Poids difficile à réguler malgré les efforts</li>
+          <li>Cycles hormonaux perturbés ou symptômes prémenstruels marqués</li>
+        </ul>
+      </div>
+      <div class="axe-explainer-card">
+        <h4>Pourquoi ça arrive</h4>
+        <p>Notre alimentation moderne, les perturbateurs environnementaux et le stress chronique épuisent nos ressources métaboliques. L'intestin — souvent appelé "deuxième cerveau" — est particulièrement sensible. Rétablir l'équilibre énergétique passe par une approche globale : alimentation, microbiote, équilibre hormonal et gestion du stress.</p>
+      </div>
+    </div>
+
+    <h2 class="axe-section-title">Thérapies recommandées pour cet axe</h2>
+    <div class="axe-therapies-grid" id="axe-energie-therapies"></div>
+
+    <div class="axe-cta-block">
+      <h3>Retrouvez votre énergie naturelle</h3>
+      <p>Identifiez les déséquilibres prioritaires avec notre diagnostic 360° gratuit et recevez vos recommandations personnalisées.</p>
+      <button class="cta-btn" onclick="navTo('diagnostic')">Faire mon diagnostic gratuit →</button>
+    </div>
+  </div>
+</div>
+
+<!-- AXE SOMMEIL & MENTAL -->
+<div class="axe-view" id="axe-mental-view" style="display:none;">
+  <div class="axe-hero mental">
+    <button class="back-button-top" onclick="switchView('landing')">← Retour</button>
+    <span class="axe-emoji">🌙</span>
+    <h1>Sommeil &amp; Mental</h1>
+    <p class="axe-subtitle">Votre tête tourne encore à 23h. Le repos n'est pas un luxe — c'est une fonction vitale.</p>
+    <div class="axe-symptomes-pills">
+      <span class="pill">Insomnie & réveils nocturnes</span>
+      <span class="pill">Stress & anxiété</span>
+      <span class="pill">Burn-out</span>
+      <span class="pill">Hypervigilance le soir</span>
+      <span class="pill">Difficultés à déconnecter</span>
+    </div>
+  </div>
+  <div class="axe-content">
+    <h2 class="axe-section-title">Comprendre l'axe Sommeil &amp; Mental</h2>
+    <div class="axe-explainer">
+      <div class="axe-explainer-card">
+        <h4>Ce que vous ressentez</h4>
+        <ul>
+          <li>Du mal à "éteindre" le cerveau le soir</li>
+          <li>Réveils nocturnes avec pensées intrusives</li>
+          <li>Sentiment d'être submergé(e) ou à bout de ressources</li>
+          <li>Irritabilité, impatience, perte de plaisir</li>
+          <li>Anxiété chronique de fond, même sans raison précise</li>
+        </ul>
+      </div>
+      <div class="axe-explainer-card">
+        <h4>Pourquoi ça arrive</h4>
+        <p>Le système nerveux autonome est en mode "alerte" permanent. Solicité en continu par les écrans, les notifications, la pression professionnelle et familiale, il ne trouve plus le chemin vers la récupération. Le sommeil se dégrade, le mental s'épuise — et le corps suit. Il existe des approches douces et efficaces pour recalibrer ce système.</p>
+      </div>
+    </div>
+
+    <h2 class="axe-section-title">Thérapies recommandées pour cet axe</h2>
+    <div class="axe-therapies-grid" id="axe-mental-therapies"></div>
+
+    <div class="axe-cta-block">
+      <h3>Retrouvez le calme et un sommeil réparateur</h3>
+      <p>Notre diagnostic 360° vous aide à comprendre ce qui dérègle votre mental — et quelles approches peuvent vraiment vous aider.</p>
+      <button class="cta-btn" onclick="navTo('diagnostic')">Faire mon diagnostic gratuit →</button>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -1500,20 +1768,50 @@ function closeMobileMenu() {
 
 // ─── VIEW SWITCHER ─────────────────────────────────────────
 function switchView(view) {
-  const landingView = document.getElementById('landing-view');
-  const repertoireView = document.getElementById('repertoire-view');
+  const views = {
+    landing: document.getElementById('landing-view'),
+    repertoire: document.getElementById('repertoire-view'),
+    'axe-corps': document.getElementById('axe-corps-view'),
+    'axe-energie': document.getElementById('axe-energie-view'),
+    'axe-mental': document.getElementById('axe-mental-view'),
+  };
+  // Hide all views
+  Object.values(views).forEach(v => { if (v) v.style.display = 'none'; });
+  // Show selected
+  if (views[view]) views[view].style.display = 'block';
+  // Nav active states
   document.querySelectorAll('.landing-link').forEach(l => l.classList.toggle('active', view === 'landing'));
-  document.querySelectorAll('.repertoire-link').forEach(l => l.classList.toggle('active', view !== 'landing'));
-  if (view === 'landing') {
-    landingView.style.display = 'block';
-    repertoireView.style.display = 'none';
-  } else {
-    landingView.style.display = 'none';
-    repertoireView.style.display = 'block';
-    renderTherapies();
-  }
+  document.querySelectorAll('.repertoire-link').forEach(l => l.classList.toggle('active', view === 'repertoire'));
+  // Populate content
+  if (view === 'repertoire') renderTherapies();
+  if (view === 'axe-corps') renderAxeTherapies('axe-corps-therapies', ['dos', 'posture', 'migraine']);
+  if (view === 'axe-energie') renderAxeTherapies('axe-energie-therapies', ['digestion', 'fatigue', 'poids', 'femme']);
+  if (view === 'axe-mental') renderAxeTherapies('axe-mental-therapies', ['stress', 'sommeil', 'fatigue']);
   window.scrollTo({ top: 0, behavior: 'smooth' });
   closeMobileMenu();
+}
+
+// ─── RENDER THERAPIES FOR AN AXE ─────────────────────────
+function renderAxeTherapies(containerId, symptoms) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  // Filter therapies that match at least one of the axe symptoms
+  const matched = THERAPIES.filter(t => t.symptoms && t.symptoms.some(s => symptoms.includes(s)));
+  if (matched.length === 0) { container.innerHTML = '<p>Aucune thérapie trouvée.</p>'; return; }
+  container.innerHTML = matched.map(t => {
+    const r = t.reconnaissance || {};
+    const hasReco = r.asca || r.rme || r.diplomeFederal;
+    return `<div class="axe-therapy-card">
+      <h3>${t.name}</h3>
+      <p class="therapy-desc">${t.shortDesc || t.whatIsIt || ''}</p>
+      <div class="badges">
+        ${r.asca ? '<span class="badge active">ASCA</span>' : ''}
+        ${r.rme ? '<span class="badge active">RME</span>' : ''}
+        ${r.diplomeFederal ? '<span class="badge active">Diplôme Fédéral</span>' : ''}
+        ${!hasReco ? '<span class="badge" style="background:#F3F4F6;color:#6B7280;">Pratique libre</span>' : ''}
+      </div>
+    </div>`;
+  }).join('');
 }
 
 // ─── NAV SCROLL HELPER ────────────────────────────────────
