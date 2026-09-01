@@ -1,0 +1,12 @@
+{
+  "buildCommand": "echo 'Static HTML site'",
+  "outputDirectory": ".",
+  "framework": null,
+  "functions": {},
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
