@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VITALITÉ 360° – Diagnostic Santé Global en Suisse</title>
+    <meta name="description" content="Évaluez votre vitalité en 2 minutes. Découvrez comment optimiser votre corps, énergie et sommeil.">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap">
+
+    <style>
+        /* CSS Custom Properties - Design Tokens */
+        :root {
+            --color-primary: #2d7659;
+            --color-primary-dark: #1e4d3f;
+            --color-accent: #e8a82d;
+            --color-accent-light: #f4e5c3;
+            --color-bg-light: #f9f8f6;
+            --color-bg-white: #ffffff;
+            --color-text-primary: #2c3e50;
+            --color-text-secondary: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #27ae60;
+            --color-warning: #e67e22;
+            --color-danger: #c0392b;
+
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --color-bg-light: #1a1a1a;
+                --color-bg-white: #242424;
+                --color-text-primary: #f0f0f0;
+                --color-text-secondary: #b0b0b0;
+                --color-border: #3a3a3a;
+                --color-accent-light: #2d2416;
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --color-bg-light: #1a1a1a;
+            --color-bg-white: #242424;
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #b0b0b0;
+            --color-border: #3a3a3a;
+            --color-accent-light: #2d2416;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text-primary);
+            background-color: var(--color-bg-light);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+            text-wrap: balance;
+        }
+
+        h1 { font-size: 3rem; letter-spacing: -0.02em; }
+        h2 { font-size: 2.25rem; margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-lg); }
+        h3 { font-size: 1.5rem; margin-bottom: var(--spacing-md); }
+        h4 { font-size: 1.25rem; }
+        p { margin-bottom: var(--spacing-md); }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover { color: var(--color-accent); }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-2xl) 0;
+        }
+
+        /* Header / Navigation */
+        header {
+            background-color: var(--color-bg-white);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) 0;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-text-primary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .btn {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--border-radius);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-bg-white);
+        }
+
+        .btn-primary:hover {
+            background-color: #d4921f;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-primary);
+            color: var(--color-bg-white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-primary);
+            color: var(--color-bg-white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            padding: var(--spacing-2xl) 0;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--color-accent-light);
+            color: var(--color-accent);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            letter-spacing: 0.05em;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+            color: white;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .social-proof {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--color-bg-white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--color-border);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--color-primary);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Sections */
+        .section-constat {
+            background-color: var(--color-bg-light);
+        }
+
+        .section-pillars {
+            background-color: var(--color-bg-white);
+        }
+
+        .section-faq {
+            background-color: var(--color-bg-light);
+        }
+
+        /* Quiz Styles */
+        .quiz-container {
+            display: none;
+            background-color: var(--color-bg-white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-2xl);
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: var(--color-border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .question {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .question h3 {
+            margin-bottom: var(--spacing-md);
+            margin-top: 0;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .answer-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .answer-option {
+            padding: var(--spacing-md);
+            border: 2px solid var(--color-border);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: var(--color-bg-light);
+        }
+
+        .answer-option:hover {
+            border-color: var(--color-accent);
+            background-color: var(--color-accent-light);
+        }
+
+        .answer-option.selected {
+            border-color: var(--color-accent);
+            background-color: var(--color-accent-light);
+            color: var(--color-text-primary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--color-bg-white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-2xl);
+            max-width: 500px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-close {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text-secondary);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+            clear: both;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--color-bg-light);
+            color: var(--color-text-primary);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(232, 168, 45, 0.1);
+        }
+
+        /* Results */
+        .results-container {
+            display: none;
+            background-color: var(--color-bg-white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-2xl);
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .score-card {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .score-value {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+        }
+
+        .score-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: var(--spacing-xs);
+        }
+
+        .pillar-scores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .pillar-score {
+            background-color: var(--color-bg-light);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .pillar-name {
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .pillar-percent {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+        }
+
+        .priority-section {
+            background-color: var(--color-accent-light);
+            border: 2px solid var(--color-accent);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .priority-title {
+            color: var(--color-accent);
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .priority-message {
+            color: var(--color-text-primary);
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Accordion */
+        .accordion-item {
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .accordion-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            color: var(--color-accent);
+        }
+
+        .accordion-icon {
+            transition: var(--transition);
+            font-size: 1.5rem;
+        }
+
+        .accordion-icon.active {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            display: none;
+            margin-top: var(--spacing-md);
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: var(--spacing-2xl) 0;
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+        }
+
+        footer a {
+            color: var(--color-accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.25rem; }
+
+            .hero h1 { font-size: 1.75rem; }
+            .hero-subtitle { font-size: 1rem; }
+
+            .nav-links {
+                gap: var(--spacing-md);
+                font-size: 0.95rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pillar-scores {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body x-data="vitaliteApp()">
+    <!-- Header / Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">VITALITÉ 360°</div>
+                <ul class="nav-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#constat">Le constat</a></li>
+                    <li><a href="#pillars">La méthode</a></li>
+                    <li><a href="#diagnostic">Diagnostic</a></li>
+                </ul>
+                <button class="btn btn-primary" @click="startQuiz()">Faire mon Bilan Gratuit</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero section">
+        <div class="container">
+            <span class="badge">L'approche globale de la santé au quotidien en Suisse</span>
+            <h1>Retrouvez une énergie durable sans alourdir votre emploi du temps.</h1>
+            <p class="hero-subtitle">
+                Une méthode 360° simple, naturelle et scientifiquement validée pour libérer les tensions du bureau, optimiser votre nutrition et retrouver un sommeil réparateur.
+            </p>
+            <div class="cta-group">
+                <button class="btn btn-primary" @click="startQuiz()" style="font-size: 1.1rem; padding: 0.75rem 2rem;">
+                    Faire mon Bilan Vitalité 360° (Gratuit — 2 min)
+                </button>
+            </div>
+            <p class="social-proof">✨ Déjà plus de 1 200 actifs accompagnés en Suisse Romande.</p>
+        </div>
+    </section>
+
+    <!-- Section: Le Constat -->
+    <section id="constat" class="section section-constat">
+        <div class="container">
+            <h2>Vous vous levez déjà fatigué(e) ?</h2>
+            <p style="font-size: 1.1rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-2xl);">
+                Découvrez les 3 signaux d'alerte que vos habitudes quotidiennes pourraient transformer.
+            </p>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">💪</div>
+                    <h3>Le corps bloqué</h3>
+                    <p>Des tensions constantes dans le cou, le haut du dos ou les lombaires après 8 heures assis. Votre posture se fait oublier, mais pas votre inconfort.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Le coup de pompe</h3>
+                    <p>Un manque d'énergie critique vers 14h, comblé à coup de cafés et de sucre. Vous fonctionnez par cycles d'énergie artificiels.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧠</div>
+                    <h3>Le mental en surrégime</h3>
+                    <p>Un cerveau qui tourne à plein régime à 23h et un sommeil morcelé. Vous vous couchez sans vraiment pouvoir vous arrêter.</p>
+                </div>
+            </div>
+            <div style="margin-top: var(--spacing-xl); padding: var(--spacing-lg); background-color: white; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-accent);">
+                <p style="margin: 0; font-style: italic; color: var(--color-text-primary);">
+                    <strong>Ce n'est pas une fatalité liée à l'âge ou au travail.</strong> C'est simplement le signe que vos 3 piliers biologiques ne sont plus alignés.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Les 3 Piliers -->
+    <section id="pillars" class="section section-pillars">
+        <div class="container">
+            <h2 style="text-align: center;">Trois piliers interconnectés.<br>Une approche globale.</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>💪 Corps & Posture</h3>
+                    <h4 style="color: var(--color-accent); font-size: 0.95rem; font-weight: 600; margin: var(--spacing-md) 0; text-transform: uppercase; letter-spacing: 0.05em;">Bio-Mécanique</h4>
+                    <p>Libérez les tensions structurelles qui vous paralysent. Grâce à des micro-routines de mobilité (3 à 5 min), une compréhension des fascias et un alignement postural naturel, votre corps retrouve son potentiel d'action.</p>
+                </div>
+                <div class="card">
+                    <h3>⚡ Énergie & Nutrition</h3>
+                    <h4 style="color: var(--color-accent); font-size: 0.95rem; font-weight: 600; margin: var(--spacing-md) 0; text-transform: uppercase; letter-spacing: 0.05em;">Bio-Chimie</h4>
+                    <p>Stabilisez votre métabolisme énergétique sans vous imposer des régimes restrictifs. Ajustements nutritionnels intelligents et phytothérapie adaptogène pour redevenir stable à 14h.</p>
+                </div>
+                <div class="card">
+                    <h3>😴 Sommeil & Mental</h3>
+                    <h4 style="color: var(--color-accent); font-size: 0.95rem; font-weight: 600; margin: var(--spacing-md) 0; text-transform: uppercase; letter-spacing: 0.05em;">Bio-Rythme</h4>
+                    <p>Réglez votre système nerveux autonome pour un repos vrai. Cohérence cardiaque, routines de décompression et gestion intelligente de votre charge cognitive.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Container -->
+    <section id="diagnostic" class="section" style="display: none;" x-show="showQuizSection">
+        <div class="container">
+            <div class="quiz-container" x-show="!showResults">
+                <div class="progress-bar">
+                    <div class="progress-fill" :style="`width: ${(currentQuestion / questions.length) * 100}%`"></div>
+                </div>
+
+                <div class="question">
+                    <h3 x-text="`Question ${currentQuestion + 1} / ${questions.length}`" style="color: var(--color-accent); margin-bottom: var(--spacing-md);"></h3>
+                    <p class="question-text" x-text="questions[currentQuestion]?.question"></p>
+
+                    <div class="answer-options">
+                        <template x-for="(option, index) in answerOptions" :key="index">
+                            <div class="answer-option"
+                                 :class="{ 'selected': answers[currentQuestion] === index }"
+                                 @click="selectAnswer(index)">
+                                <span x-text="option"></span>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: var(--spacing-md); margin-top: var(--spacing-lg);">
+                    <button class="btn btn-outline" @click="previousQuestion()" x-show="currentQuestion > 0" style="flex: 1;">Précédent</button>
+                    <button class="btn btn-primary" @click="nextQuestion()" style="flex: 1;" x-text="currentQuestion === questions.length - 1 ? 'Voir mes résultats' : 'Suivant'"></button>
+                </div>
+            </div>
+
+            <!-- Results Display -->
+            <div class="results-container" x-show="showResults">
+                <h2 style="text-align: center;">Vos résultats Vitalité 360°</h2>
+
+                <div class="score-card">
+                    <div class="score-value" x-text="`${globalScore}%`"></div>
+                    <div class="score-label">Score Global de Vitalité</div>
+                </div>
+
+                <h3 style="text-align: center; margin-top: var(--spacing-xl);">Détail par pilier</h3>
+                <div class="pillar-scores">
+                    <div class="pillar-score">
+                        <div class="pillar-name">💪 Corps & Posture</div>
+                        <div class="pillar-percent" x-text="`${pillarScores.body}%`"></div>
+                    </div>
+                    <div class="pillar-score">
+                        <div class="pillar-name">⚡ Énergie & Nutrition</div>
+                        <div class="pillar-percent" x-text="`${pillarScores.energy}%`"></div>
+                    </div>
+                    <div class="pillar-score">
+                        <div class="pillar-name">😴 Sommeil & Mental</div>
+                        <div class="pillar-percent" x-text="`${pillarScores.sleep}%`"></div>
+                    </div>
+                </div>
+
+                <div class="priority-section">
+                    <div class="priority-title">🎯 Priorité immédiate</div>
+                    <div class="priority-message" x-text="priorityMessage"></div>
+                    <div style="display: flex; gap: var(--spacing-md); margin-top: var(--spacing-md); flex-wrap: wrap; justify-content: center;">
+                        <button class="btn btn-primary">Trouver un Praticien</button>
+                        <button class="btn btn-outline" @click="resetQuiz()">Refaire le Test</button>
+                    </div>
+                </div>
+
+                <div style="margin-top: var(--spacing-lg); padding: var(--spacing-lg); background-color: var(--color-accent-light); border-radius: var(--border-radius); text-align: center; border: 1px solid var(--color-border);">
+                    <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.95rem;">
+                        📧 <strong>Recevez votre plan d'action personnalisé par email</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Capture Modal -->
+    <div class="modal" :class="{ 'active': showLeadModal }">
+        <div class="modal-content">
+            <span class="modal-close" @click="showLeadModal = false">&times;</span>
+            <h3 style="text-align: center; color: var(--color-primary);">Avant de voir vos résultats...</h3>
+            <p style="text-align: center; color: var(--color-text-secondary);">Recevez votre diagnostic détaillé et un plan d'action personnalisé par email.</p>
+
+            <form @submit.prevent="submitLead()">
+                <div class="form-group">
+                    <label for="firstName">Prénom</label>
+                    <input type="text" id="firstName" x-model="leadForm.firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Nom</label>
+                    <input type="text" id="lastName" x-model="leadForm.lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" x-model="leadForm.email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone (optionnel)</label>
+                    <input type="tel" id="phone" x-model="leadForm.phone">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-md);">Voir mes résultats</button>
+            </form>
+
+            <p style="text-align: center; font-size: 0.85rem; color: var(--color-text-secondary); margin-top: var(--spacing-md);">
+                ✓ Vos données sont protégées. <a href="#" style="color: var(--color-primary);">Lire notre politique de confidentialité</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Section: FAQ -->
+    <section class="section section-faq">
+        <div class="container">
+            <h2 style="text-align: center;">Questions Fréquentes</h2>
+
+            <div style="max-width: 800px; margin: 0 auto; margin-top: var(--spacing-2xl);">
+                <div class="accordion-item" x-data="{ open: false }">
+                    <div class="accordion-header" @click="open = !open">
+                        <span>C'est quoi exactement VITALITÉ 360 ?</span>
+                        <span class="accordion-icon" :class="{ 'active': open }">▼</span>
+                    </div>
+                    <div class="accordion-content" :class="{ 'active': open }">
+                        <p>VITALITÉ 360° est une approche holistique de la santé qui évalue votre bien-être global en 2 minutes à travers 12 questions ciblées. Nos résultats vous montrent où diriger votre énergie pour retrouver équilibre, vitalité et sérénité au quotidien.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" x-data="{ open: false }">
+                    <div class="accordion-header" @click="open = !open">
+                        <span>Combien de temps avant de me sentir mieux ?</span>
+                        <span class="accordion-icon" :class="{ 'active': open }">▼</span>
+                    </div>
+                    <div class="accordion-content" :class="{ 'active': open }">
+                        <p>Cela dépend de votre engagement et de vos piliers prioritaires. Certaines personnes ressentent une différence après 2-3 semaines de micro-routines quotidiennes. D'autres ont besoin de 6-8 semaines pour une transformation notable. L'important est la consistency.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" x-data="{ open: false }">
+                    <div class="accordion-header" @click="open = !open">
+                        <span>Est-ce gratuit ?</span>
+                        <span class="accordion-icon" :class="{ 'active': open }">▼</span>
+                    </div>
+                    <div class="accordion-content" :class="{ 'active': open }">
+                        <p>Oui ! Le diagnostic est 100% gratuit. Vous recevrez votre rapport complet et des conseils initiaux sans aucun coût. Nous proposons également des services d'accompagnement optionnels pour ceux qui souhaitent aller plus loin.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" x-data="{ open: false }">
+                    <div class="accordion-header" @click="open = !open">
+                        <span>Est-ce que ça remplace mon médecin ou mon thérapeute ?</span>
+                        <span class="accordion-icon" :class="{ 'active': open }">▼</span>
+                    </div>
+                    <div class="accordion-content" :class="{ 'active': open }">
+                        <p>Non. VITALITÉ 360° est un diagnostic complémentaire conçu pour optimiser votre bien-être général. Il ne remplace jamais les conseils médicaux d'un professionnel. Si vous avez une condition médicale, consultez votre médecin avant de changer vos habitudes.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item" x-data="{ open: false }">
+                    <div class="accordion-header" @click="open = !open">
+                        <span>Comment mes données sont-elles protégées ?</span>
+                        <span class="accordion-icon" :class="{ 'active': open }">▼</span>
+                    </div>
+                    <div class="accordion-content" :class="{ 'active': open }">
+                        <p>Vos données sont traitées selon la législation RGPD et les standards de protection suisses. Nous ne vendons jamais vos informations et vous pouvez demander leur suppression à tout moment. Pour plus de détails, consultez notre <a href="#">politique de confidentialité</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="section" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="color: white;">Faites le point en 2 minutes, gratuitement.</h2>
+            <p style="font-size: 1.15rem; opacity: 0.95; margin-bottom: var(--spacing-lg);">
+                Découvrez quel pilier de votre vitalité mérite le plus d'attention aujourd'hui.
+            </p>
+            <button class="btn btn-primary" @click="startQuiz()" style="font-size: 1.1rem; padding: 0.75rem 2rem;">
+                Faire mon Bilan Vitalité 360°
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: var(--spacing-md);">© 2024 VITALITÉ 360° — Santé Globale en Suisse Romande</p>
+            <div style="display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap; font-size: 0.95rem;">
+                <a href="#">Mentions légales</a>
+                <a href="#">Politique de Confidentialité</a>
+                <a href="#">RGPD & Données Personnelles</a>
+                <a href="#">Nous contacter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Alpine.js from CDN -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.0/cdn.min.js"></script>
+
+    <!-- App Logic -->
+    <script>
+        function vitaliteApp() {
+            return {
+                // Quiz Data
+                questions: [
+                    { id: 1, pillar: 'body', question: 'Comment se sentent vos tensions musculaires après 8h de travail ?' },
+                    { id: 2, pillar: 'body', question: 'À quel point votre posture vous cause-t-elle de l\'inconfort ?' },
+                    { id: 3, pillar: 'body', question: 'Comment évaluez-vous votre flexibilité et votre mobilité globale ?' },
+                    { id: 4, pillar: 'body', question: 'Ressentez-vous des douleurs lombaires chroniques ?' },
+
+                    { id: 5, pillar: 'energy', question: 'Comment décriveriez-vous votre niveau d\'énergie à 14h ?' },
+                    { id: 6, pillar: 'energy', question: 'À quelle fréquence recourez-vous à la caféine ou au sucre pour tenir la journée ?' },
+                    { id: 7, pillar: 'energy', question: 'Votre métabolisme énergétique vous semble-t-il stable ?' },
+                    { id: 8, pillar: 'energy', question: 'Comment est votre relation à la nutrition actuellement ?' },
+
+                    { id: 9, pillar: 'sleep', question: 'Avez-vous du mal à "déconnecter" mentalement le soir ?' },
+                    { id: 10, pillar: 'sleep', question: 'Comment décriveriez-vous la qualité de votre sommeil ?' },
+                    { id: 11, pillar: 'sleep', question: 'Ressentez-vous du stress chronique ou de l\'anxiété ?' },
+                    { id: 12, pillar: 'sleep', question: 'Avez-vous des routines de relaxation avant le coucher ?' }
+                ],
+
+                answerOptions: ['Excellent', 'Bon', 'Acceptable', 'Difficile'],
+
+                // State
+                currentQuestion: 0,
+                answers: {},
+                showQuizSection: false,
+                showResults: false,
+                showLeadModal: false,
+
+                leadForm: {
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    phone: ''
+                },
+
+                globalScore: 0,
+                pillarScores: {
+                    body: 0,
+                    energy: 0,
+                    sleep: 0
+                },
+                priorityMessage: '',
+
+                // Methods
+                init() {
+                    this.loadFromStorage();
+                },
+
+                startQuiz() {
+                    this.showQuizSection = true;
+                    this.currentQuestion = 0;
+                    this.answers = {};
+                    this.showResults = false;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                },
+
+                selectAnswer(index) {
+                    this.answers[this.currentQuestion] = index;
+                    this.saveToStorage();
+                },
+
+                nextQuestion() {
+                    if (this.currentQuestion < this.questions.length - 1) {
+                        this.currentQuestion++;
+                    } else {
+                        this.showLeadModal = true;
+                    }
+                },
+
+                previousQuestion() {
+                    if (this.currentQuestion > 0) {
+                        this.currentQuestion--;
+                    }
+                },
+
+                submitLead() {
+                    this.saveToStorage();
+                    this.calculateResults();
+                    this.showLeadModal = false;
+                    this.showResults = true;
+                },
+
+                calculateResults() {
+                    let bodyScore = 0, energyScore = 0, sleepScore = 0;
+                    let bodyCount = 0, energyCount = 0, sleepCount = 0;
+
+                    this.questions.forEach((q, idx) => {
+                        const answer = this.answers[idx] || 0;
+                        const score = ((3 - answer) / 3) * 100;
+
+                        if (q.pillar === 'body') {
+                            bodyScore += score;
+                            bodyCount++;
+                        } else if (q.pillar === 'energy') {
+                            energyScore += score;
+                            energyCount++;
+                        } else if (q.pillar === 'sleep') {
+                            sleepScore += score;
+                            sleepCount++;
+                        }
+                    });
+
+                    this.pillarScores.body = Math.round(bodyScore / bodyCount);
+                    this.pillarScores.energy = Math.round(energyScore / energyCount);
+                    this.pillarScores.sleep = Math.round(sleepScore / sleepCount);
+
+                    this.globalScore = Math.round(
+                        (this.pillarScores.body + this.pillarScores.energy + this.pillarScores.sleep) / 3
+                    );
+
+                    // Set priority message
+                    const scores = [
+                        { name: 'Corps & Posture', value: this.pillarScores.body },
+                        { name: 'Énergie & Nutrition', value: this.pillarScores.energy },
+                        { name: 'Sommeil & Mental', value: this.pillarScores.sleep }
+                    ];
+
+                    const lowest = scores.reduce((a, b) => a.value < b.value ? a : b);
+                    this.priorityMessage = `Prenez soin de votre ${lowest.name.toLowerCase()}`;
+                },
+
+                resetQuiz() {
+                    this.currentQuestion = 0;
+                    this.answers = {};
+                    this.showResults = false;
+                    this.startQuiz();
+                },
+
+                saveToStorage() {
+                    const data = {
+                        answers: this.answers,
+                        lead: this.leadForm
+                    };
+                    localStorage.setItem('vitalite360_diagnostic', JSON.stringify(data));
+                },
+
+                loadFromStorage() {
+                    const stored = localStorage.getItem('vitalite360_diagnostic');
+                    if (stored) {
+                        const data = JSON.parse(stored);
+                        this.answers = data.answers || {};
+                        this.leadForm = data.lead || this.leadForm;
+                    }
+                }
+            };
+        }
+    </script>
+</body>
+</html>
